@@ -800,9 +800,7 @@ var quizData = {
       { min: 4, max: 4, emoji: "🤖", title: "AI中级", desc: "非常好！你对概念有很好的理解。在我们的Discord中分享你的知识！" },
       { min: 5, max: 5, emoji: "🚀", title: "AI专家", desc: "令人印象深刻！你站在顶端。$LAI社区需要像你这样的人！" }
     ]
-  }
-};
-
+  },
   ar: {
     title: "🧠 ما مستواك في الذكاء الاصطناعي؟",
     restart: "🔄 إعادة البدء",
@@ -835,12 +833,21 @@ var quizData = {
       }
     ],
     results: [
-      { min: 0, max: 1, emoji: "🐣", title: "مبتدئ تام", desc: "لا تقلق! الجميع يبدأ من مكان ما. $LAI مصنوع لك — انضم إلى مجتمعنا وتعلم الذكاء الاصطناعي خطوة بخطوة!" },
-      { min: 2, max: 3, emoji: "📚", title: "فضولي بالذكاء الاصطناعي", desc: "أنت تعرف الأساسيات! استمر في التعلم مع مجتمع $LAI وستصبح خبيراً في وقت قصير 🚀" },
-      { min: 4, max: 4, emoji: "🤖", title: "متوسط في الذكاء الاصطناعي", desc: "ممتاز! لديك فهم جيد. شارك معرفتك في Discord الخاص بنا!" },
-      { min: 5, max: 5, emoji: "🚀", title: "خبير الذكاء الاصطناعي", desc: "رائع! أنت في القمة. مجتمع $LAI يحتاج إلى أشخاص مثلك!" }
+      { min: 0, max: 1, emoji: "🐣", title: "مبتدئ تام", desc: "لا تقلق! الجميع يبدأ من مكان ما. $LAI مصنوع لك!",
+        ai: { name: "ChatGPT", url: "https://chat.openai.com", reason: "بسيط وبديهي ومثالي للمبتدئين. اسأله أي شئ بلغتك!", icon: "🤖" }
+      },
+      { min: 2, max: 3, emoji: "📚", title: "فضولي بالذكاء الاصطناعي", desc: "أنت تعرف الأساسيات! استمر في التعلم مع مجتمع $LAI 🚀",
+        ai: { name: "Claude", url: "https://claude.ai", reason: "مثالي لتعميق معرفتك. كلود يشرح المفاهيم المعقدة بوضوح.", icon: "🎓" }
+      },
+      { min: 4, max: 4, emoji: "🤖", title: "متوسط في الذكاء الاصطناعي", desc: "ممتاز! لديك فهم جيد. شارك معرفتك في Discord!",
+        ai: { name: "Gemini", url: "https://gemini.google.com", reason: "مثالي لك! جيميني يربط الذكاء الاصطناعي بالبحث الفوري على الويب.", icon: "🔍" }
+      },
+      { min: 5, max: 5, emoji: "🚀", title: "خبير الذكاء الاصطناعي", desc: "رائع! أنت في القمة. مجتمع $LAI يحتاج إليك!",
+        ai: { name: "Grok", url: "https://grok.com", reason: "للخبراء! غروك لديه أدنى معدل هلوسة ونافذة 2M توكن.", icon: "⚡" }
+      }
     ]
-  },
+  }
+};
 
 var currentQuestion = 0;
 var score = 0;
@@ -1083,9 +1090,7 @@ var i18n = {
     section_contract:"Dirección del Contrato",ca_label:"Contract Address (CA)",copy_btn:"📋 Copiar",
     footer_disclaimer:"LEARN A.I $LAI — No es consejo financiero. DYOR. 🐸",
     footer_powered:"Impulsado por Solana ⚡"
-  }
-};
-
+  },
   ar: {
     nav_tokenomics:"التوكينوميكس",nav_buy:"شراء",nav_contract:"العقد",
     badge:"جديد على سولانا",
@@ -1107,7 +1112,8 @@ var i18n = {
     quiz_title:"🧠 ما مستواك في الذكاء الاصطناعي؟",quiz_restart:"🔄 إعادة البدء",
     footer_disclaimer:"LEARN A.I $LAI — ليس نصيحة مالية. DYOR. 🐸",
     footer_powered:"مدعوم بواسطة Solana ⚡"
-  },
+  }
+};
 
 var currentLang = 'fr';
 
