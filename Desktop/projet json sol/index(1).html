@@ -553,44 +553,51 @@
   </div>
 </section>
 
-<!-- CHATBOT IA -->
-<div class="section" id="chatbot">
-  <h2 class="section-title">💬 Assistant $LAI — Pose ta question !</h2>
-  <div style="max-width:600px;margin:0 auto;">
-    <div id="chat-messages" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;height:320px;overflow-y:auto;display:flex;flex-direction:column;gap:.75rem;margin-bottom:1rem;">
-      <div style="background:rgba(79,255,176,.08);border:1px solid rgba(79,255,176,.2);border-radius:8px;padding:.75rem 1rem;font-size:.82rem;line-height:1.6;max-width:85%;">
-        👋 Bonjour ! Je suis l'assistant $LAI. Pose-moi n'importe quelle question sur l'IA ou sur $LAI !
-      </div>
-    </div>
-    <div style="display:flex;gap:.75rem;">
-      <input id="chat-input" type="text" placeholder="Pose ta question..." style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;color:var(--text);font-family:'Space Mono',monospace;font-size:.8rem;outline:none;transition:border-color .2s;" onkeypress="if(event.key==='Enter')sendChat()" onfocus="this.style.borderColor='rgba(79,255,176,.4)'" onblur="this.style.borderColor='var(--border)'"/>
-      <button onclick="sendChat()" style="background:var(--accent);color:#050f08;border:none;border-radius:8px;padding:.75rem 1.2rem;font-family:'Space Mono',monospace;font-size:.8rem;font-weight:700;cursor:pointer;white-space:nowrap;">Envoyer ➤</button>
-    </div>
-    <div style="text-align:center;margin-top:.75rem;color:var(--muted);font-size:.68rem;">
-      Propulsé par Groq IA ⚡ — Réponses en temps réel
+<!-- CHATBOT FLOTTANT -->
+<div id="chat-bubble" onclick="toggleChat()" style="position:fixed;bottom:2rem;right:2rem;width:56px;height:56px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:999;box-shadow:0 0 24px rgba(79,255,176,.5);font-size:1.4rem;transition:transform .2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">🤖</div>
+
+<div id="chat-window" style="display:none;position:fixed;bottom:6rem;right:2rem;width:340px;background:var(--surface);border:1px solid rgba(79,255,176,.3);border-radius:16px;z-index:998;box-shadow:0 8px 40px rgba(0,0,0,.4);overflow:hidden;flex-direction:column;">
+  <div style="background:rgba(79,255,176,.1);padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);">
+    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;">💬 Assistant $LAI</div>
+    <button onclick="toggleChat()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.1rem;">✕</button>
+  </div>
+  <div id="chat-messages" style="padding:1rem;height:280px;overflow-y:auto;display:flex;flex-direction:column;gap:.75rem;">
+    <div style="background:rgba(79,255,176,.08);border:1px solid rgba(79,255,176,.2);border-radius:8px;padding:.75rem;font-size:.78rem;line-height:1.6;max-width:90%;">
+      👋 Bonjour ! Je suis l'assistant $LAI. Pose-moi n'importe quelle question sur l'IA ou sur $LAI !
     </div>
   </div>
+  <div style="padding:.75rem;border-top:1px solid var(--border);display:flex;gap:.5rem;">
+    <input id="chat-input" type="text" placeholder="Pose ta question..." style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.6rem .8rem;color:var(--text);font-family:'Space Mono',monospace;font-size:.75rem;outline:none;" onkeypress="if(event.key==='Enter')sendChat()" onfocus="this.style.borderColor='rgba(79,255,176,.4)'" onblur="this.style.borderColor='var(--border)'"/>
+    <button onclick="sendChat()" style="background:var(--accent);color:#050f08;border:none;border-radius:8px;padding:.6rem .9rem;font-weight:700;cursor:pointer;font-size:.8rem;">➤</button>
+  </div>
+  <div style="text-align:center;padding:.4rem;color:var(--muted);font-size:.6rem;">⚡ Propulsé par Groq IA</div>
 </div>
 
 <script>
+function toggleChat() {
+  var win = document.getElementById('chat-window');
+  win.style.display = win.style.display === 'none' ? 'flex' : 'none';
+  if (win.style.display === 'flex') {
+    document.getElementById('chat-input').focus();
+  }
+}
+
 async function sendChat() {
   var input = document.getElementById('chat-input');
   var messages = document.getElementById('chat-messages');
   var msg = input.value.trim();
   if (!msg) return;
 
-  // Affiche le message de l'utilisateur
   var userDiv = document.createElement('div');
-  userDiv.style.cssText = 'background:rgba(79,255,176,.12);border:1px solid rgba(79,255,176,.25);border-radius:8px;padding:.75rem 1rem;font-size:.82rem;line-height:1.6;max-width:85%;align-self:flex-end;margin-left:auto;';
+  userDiv.style.cssText = 'background:rgba(79,255,176,.12);border:1px solid rgba(79,255,176,.25);border-radius:8px;padding:.75rem;font-size:.78rem;line-height:1.6;max-width:90%;align-self:flex-end;margin-left:auto;';
   userDiv.textContent = msg;
   messages.appendChild(userDiv);
   input.value = '';
   messages.scrollTop = messages.scrollHeight;
 
-  // Affiche "En train d'écrire..."
   var typingDiv = document.createElement('div');
-  typingDiv.style.cssText = 'background:rgba(79,255,176,.08);border:1px solid rgba(79,255,176,.2);border-radius:8px;padding:.75rem 1rem;font-size:.82rem;color:var(--muted);max-width:85%;';
-  typingDiv.textContent = '⏳ En train de réfléchir...';
+  typingDiv.style.cssText = 'background:rgba(79,255,176,.08);border:1px solid rgba(79,255,176,.2);border-radius:8px;padding:.75rem;font-size:.78rem;color:var(--muted);max-width:90%;';
+  typingDiv.textContent = '⏳ Réflexion en cours...';
   messages.appendChild(typingDiv);
   messages.scrollTop = messages.scrollHeight;
 
@@ -604,7 +611,7 @@ async function sendChat() {
     typingDiv.style.color = 'var(--text)';
     typingDiv.textContent = '🤖 ' + data.reply;
   } catch(e) {
-    typingDiv.textContent = '❌ Erreur de connexion. Réessaie !';
+    typingDiv.textContent = '❌ Erreur. Réessaie !';
   }
   messages.scrollTop = messages.scrollHeight;
 }
