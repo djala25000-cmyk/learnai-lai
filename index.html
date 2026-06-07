@@ -851,10 +851,54 @@ var quizData = {
 
 var currentQuestion = 0;
 var score = 0;
-var lang = 'fr';
 
 function getQuizLang() {
   return quizData[currentLang] || quizData['en'];
+}
+
+// Charge les stats depuis localStorage
+function getStats() {
+  try {
+    return JSON.parse(localStorage.getItem('lai_quiz_stats') || '{}');
+  } catch(e) { return {}; }
+}
+
+// Sauvegarde les stats
+function saveStats(stats) {
+  try { localStorage.setItem('lai_quiz_stats', JSON.stringify(stats)); } catch(e) {}
+}
+
+// Enregistre une réponse
+function recordAnswer(qIdx, aIdx) {
+  var stats = getStats();
+  var key = 'q' + qIdx;
+  if (!stats[key]) stats[key] = [0, 0, 0, 0];
+  stats[key][aIdx]++;
+  saveStats(stats);
+}
+
+// Affiche les barres de stats après réponse
+function showStats(qIdx, chosenIdx, correctIdx) {
+  var stats = getStats();
+  var key = 'q' + qIdx;
+  var counts = stats[key] || [0, 0, 0, 0];
+  var total = counts.reduce(function(a, b) { return a + b; }, 0);
+  var btns = document.querySelectorAll('.quiz-btn');
+  for (var i = 0; i < btns.length; i++) {
+    var pct = total > 0 ? Math.round((counts[i] || 0) / total * 100) : 0;
+    var isCorrect = (i === correctIdx);
+    var isChosen = (i === chosenIdx);
+    var color = isCorrect ? 'rgba(79,255,176,.35)' : (isChosen ? 'rgba(255,80,80,.25)' : 'rgba(79,255,176,.08)');
+    var border = isCorrect ? 'rgba(79,255,176,.6)' : (isChosen && !isCorrect ? 'rgba(255,80,80,.5)' : 'var(--border)');
+    var icon = isCorrect ? ' ✅' : (isChosen && !isCorrect ? ' ❌' : '');
+    btns[i].disabled = true;
+    btns[i].style.position = 'relative';
+    btns[i].style.overflow = 'hidden';
+    btns[i].style.borderColor = border;
+    btns[i].innerHTML = '<div style="position:absolute;left:0;top:0;height:100%;width:' + pct + '%;background:' + color + ';transition:width .5s;z-index:0;border-radius:7px;"></div>'
+      + '<span style="position:relative;z-index:1;">' + btns[i].textContent + icon + '</span>'
+      + '<span style="position:absolute;right:.8rem;top:50%;transform:translateY(-50%);font-size:.8rem;font-weight:700;color:var(--accent);z-index:1;">' + pct + '%</span>';
+  }
 }
 
 function startQuiz() {
@@ -881,12 +925,21 @@ function answer(idx) {
   var d = getQuizLang();
   var q = d.questions[currentQuestion];
   if (idx === q.correct) score++;
-  currentQuestion++;
-  if (currentQuestion < 5) {
-    showQuestion();
-  } else {
-    showResult();
-  }
+
+  // Enregistre et affiche les stats
+  recordAnswer(currentQuestion, idx);
+  showStats(currentQuestion, idx, q.correct);
+
+  // Attend 1.5s avant de passer à la question suivante
+  var nextQ = currentQuestion + 1;
+  setTimeout(function() {
+    currentQuestion = nextQ;
+    if (currentQuestion < 5) {
+      showQuestion();
+    } else {
+      showResult();
+    }
+  }, 1500);
 }
 
 function showResult() {
