@@ -920,12 +920,6 @@ function restartQuiz() { startQuiz(); }
 
 window.addEventListener('load', function() { startQuiz(); });
 
-// Update quiz language when site language changes
-var origSetLang = window.setLang;
-window.setLang = function(l) {
-  if (origSetLang) origSetLang(l);
-  startQuiz();
-};
 </script>
 
 <!-- CONTRACT ADDRESS -->
@@ -1142,6 +1136,7 @@ function copyCA() {
 
 document.getElementById('langSelect').addEventListener('change', function() {
   setLang(this.value);
+  startQuiz();
 });
 </script>
 </body>
