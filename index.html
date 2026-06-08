@@ -553,6 +553,160 @@
   </div>
 </section>
 
+<!-- GÉNÉRATEUR DE PROMPT -->
+<div class="section" id="prompt-gen">
+  <h2 class="section-title">⚡ Générateur de Prompt IA</h2>
+  <p style="color:var(--muted);font-size:.82rem;margin-bottom:2rem;">Génère le prompt parfait pour n'importe quelle IA en quelques clics !</p>
+
+  <div style="max-width:700px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+
+    <!-- Tâche -->
+    <div>
+      <div style="color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">1. Je veux...</div>
+      <select id="pg-task" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:.75rem 1rem;font-family:'Space Mono',monospace;font-size:.78rem;cursor:pointer;outline:none;" onchange="generatePrompt()">
+        <option value="email">✉️ Écrire un email professionnel</option>
+        <option value="code">💻 Créer du code</option>
+        <option value="content">📝 Créer du contenu (post, article)</option>
+        <option value="analyze">🔍 Analyser un texte ou document</option>
+        <option value="translate">🌍 Traduire un texte</option>
+        <option value="summarize">📋 Résumer un contenu</option>
+        <option value="idea">💡 Trouver des idées</option>
+        <option value="learn">🎓 Apprendre un concept</option>
+        <option value="crypto">🪙 Comprendre la crypto / $LAI</option>
+        <option value="ai">🤖 Comprendre l'IA</option>
+      </select>
+    </div>
+
+    <!-- IA cible -->
+    <div>
+      <div style="color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">2. Pour quelle IA ?</div>
+      <select id="pg-ai" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:.75rem 1rem;font-family:'Space Mono',monospace;font-size:.78rem;cursor:pointer;outline:none;" onchange="generatePrompt()">
+        <option value="chatgpt">🤖 ChatGPT</option>
+        <option value="claude">🎓 Claude</option>
+        <option value="gemini">🔍 Gemini</option>
+        <option value="grok">⚡ Grok</option>
+        <option value="any">✨ N'importe laquelle</option>
+      </select>
+    </div>
+
+    <!-- Niveau -->
+    <div>
+      <div style="color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">3. Mon niveau</div>
+      <select id="pg-level" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:.75rem 1rem;font-family:'Space Mono',monospace;font-size:.78rem;cursor:pointer;outline:none;" onchange="generatePrompt()">
+        <option value="beginner">🐣 Débutant</option>
+        <option value="intermediate">📚 Intermédiaire</option>
+        <option value="expert">🚀 Expert</option>
+      </select>
+    </div>
+
+    <!-- Langue de sortie -->
+    <div>
+      <div style="color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">4. Langue de la réponse</div>
+      <select id="pg-lang" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:.75rem 1rem;font-family:'Space Mono',monospace;font-size:.78rem;cursor:pointer;outline:none;" onchange="generatePrompt()">
+        <option value="français">🇫🇷 Français</option>
+        <option value="English">🇬🇧 English</option>
+        <option value="Deutsch">🇩🇪 Deutsch</option>
+        <option value="Español">🇪🇸 Español</option>
+        <option value="中文">🇨🇳 中文</option>
+        <option value="العربية">🇸🇦 العربية</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Résultat -->
+  <div style="max-width:700px;margin:0 auto;">
+    <div style="color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">✅ Ton prompt généré :</div>
+    <div id="pg-result" style="background:var(--surface);border:1px solid rgba(79,255,176,.3);border-radius:12px;padding:1.5rem;font-size:.82rem;line-height:1.7;min-height:120px;white-space:pre-wrap;"></div>
+    <button onclick="copyPrompt()" id="pg-copy-btn" style="margin-top:1rem;background:rgba(79,255,176,.1);border:1px solid rgba(79,255,176,.25);color:var(--accent);padding:.6rem 1.4rem;border-radius:8px;font-family:'Space Mono',monospace;font-size:.75rem;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='rgba(79,255,176,.2)'" onmouseout="this.style.background='rgba(79,255,176,.1)'">📋 Copier le prompt</button>
+  </div>
+</div>
+
+<script>
+var prompts = {
+  email: {
+    beginner: "Tu es un expert en communication professionnelle.\nÉcris-moi un email formel pour [DESTINATAIRE] concernant [SUJET].\nLe ton doit être professionnel et concis. Maximum 200 mots.\nRéponds en {lang}.",
+    intermediate: "Tu es un expert en communication d'entreprise.\nRédige un email professionnel avec :\n- Objet : [OBJET DE L'EMAIL]\n- Destinataire : [NOM/POSTE]\n- Message principal : [CONTENU]\n- Appel à l'action clair\nAdapte le ton selon le contexte. Réponds en {lang}.",
+    expert: "En tant qu'expert en communication stratégique, rédige un email de [TYPE : négociation/partenariat/relance] pour [DESTINATAIRE].\nIntègre les techniques de persuasion, un hook d'accroche fort et un CTA précis.\nContexte : [CONTEXTE]. Réponds en {lang}."
+  },
+  code: {
+    beginner: "Tu es un développeur pédagogue.\nExplique-moi comment créer [CE QUE JE VEUX CRÉER] en [LANGAGE].\nDonne-moi le code étape par étape avec des commentaires.\nJe suis débutant. Réponds en {lang}.",
+    intermediate: "Tu es un développeur senior.\nCrée un [TYPE DE CODE] en [LANGAGE] qui [FONCTIONNALITÉ].\nLe code doit être propre, commenté et suivre les bonnes pratiques.\nContexte : [CONTEXTE]. Réponds en {lang}.",
+    expert: "En tant qu'architecte logiciel, implémente [FONCTIONNALITÉ] en [LANGAGE] en utilisant [PATTERN/FRAMEWORK].\nOptimise pour la performance et la maintenabilité.\nInclude les tests unitaires. Contexte : [CONTEXTE]. Réponds en {lang}."
+  },
+  content: {
+    beginner: "Tu es un créateur de contenu.\nÉcris un post pour [PLATEFORME : Twitter/LinkedIn/Instagram] sur [SUJET].\nLe ton doit être simple et engageant. Maximum [NOMBRE] mots.\nRéponds en {lang}.",
+    intermediate: "Tu es un expert en marketing de contenu.\nCrée un [POST/ARTICLE/THREAD] sur [SUJET] pour [AUDIENCE CIBLE].\nInclus un hook accrocheur, 3 points clés et un CTA.\nTon : [PROFESSIONNEL/DÉCONTRACTÉ/INSPIRANT]. Réponds en {lang}.",
+    expert: "En tant que stratège de contenu, crée une campagne de contenu pour [SUJET] incluant :\n- 1 post long LinkedIn\n- 5 tweets pour un thread\n- 1 description Instagram\nCible : [AUDIENCE]. Objectif : [ENGAGEMENT/CONVERSION/NOTORIÉTÉ]. Réponds en {lang}."
+  },
+  analyze: {
+    beginner: "Analyse ce texte et explique-moi les points principaux de façon simple :\n[COLLE TON TEXTE ICI]\nDonne-moi un résumé en 3 points. Réponds en {lang}.",
+    intermediate: "Effectue une analyse approfondie de ce contenu :\n[CONTENU]\nIdentifie : les idées principales, les arguments, les points forts et faibles.\nStructure ta réponse clairement. Réponds en {lang}.",
+    expert: "Réalise une analyse critique et stratégique de [DOCUMENT/TEXTE/DONNÉES] :\n[CONTENU]\nÉvalue : la logique argumentative, les biais potentiels, les implications stratégiques.\nFournis des recommandations actionnables. Réponds en {lang}."
+  },
+  translate: {
+    beginner: "Traduis ce texte en [LANGUE CIBLE] de façon simple et naturelle :\n[TEXTE À TRADUIRE]\nSi un mot est difficile, explique-le. Réponds en {lang}.",
+    intermediate: "Traduis ce texte en [LANGUE CIBLE] en préservant le ton et le style original :\n[TEXTE]\nAdapte les expressions culturelles si nécessaire. Réponds en {lang}.",
+    expert: "Réalise une traduction professionnelle de [LANGUE SOURCE] vers [LANGUE CIBLE] :\n[TEXTE]\nPreserve le registre linguistique, les nuances culturelles et le style.\nFournis des notes de traducteur si nécessaire. Réponds en {lang}."
+  },
+  summarize: {
+    beginner: "Résume ce contenu en 5 points simples et clairs :\n[CONTENU À RÉSUMER]\nUtilise des mots simples. Réponds en {lang}.",
+    intermediate: "Crée un résumé structuré de ce contenu :\n[CONTENU]\nFormat : Introduction (2 phrases), Points clés (5 bullets), Conclusion.\nRéponds en {lang}.",
+    expert: "Produis un executive summary de [DOCUMENT/RAPPORT] :\n[CONTENU]\nInclus : contexte, enjeux stratégiques, points critiques, recommandations.\nMaximum 300 mots. Réponds en {lang}."
+  },
+  idea: {
+    beginner: "Génère 10 idées créatives pour [SUJET/PROJET].\nLes idées doivent être simples et réalisables.\nExplique brièvement chaque idée. Réponds en {lang}.",
+    intermediate: "Brainstorme 15 idées innovantes pour [SUJET] en tenant compte de [CONTRAINTES].\nClassifie-les par : facilité de mise en œuvre et impact potentiel.\nRéponds en {lang}.",
+    expert: "Conduis un brainstorming stratégique sur [PROBLÈME/OPPORTUNITÉ] :\nUtilise la méthode SCAMPER (Substitute, Combine, Adapt, Modify, Put to other uses, Eliminate, Reverse).\nFournis 3 idées disruptives avec leur plan d'action. Réponds en {lang}."
+  },
+  learn: {
+    beginner: "Explique-moi [CONCEPT] comme si j'avais 10 ans.\nUtilise des exemples du quotidien et des analogies simples.\nÉvite le jargon technique. Réponds en {lang}.",
+    intermediate: "Explique [CONCEPT] avec :\n1. La définition claire\n2. Comment ça fonctionne\n3. Un exemple concret\n4. Les cas d'usage pratiques\nNiveau : intermédiaire. Réponds en {lang}.",
+    expert: "Fournis une explication experte de [CONCEPT] incluant :\n- Les fondements théoriques\n- Les mécanismes avancés\n- Les cas limites et exceptions\n- Les dernières avancées dans le domaine\n- Les ressources pour approfondir. Réponds en {lang}."
+  },
+  crypto: {
+    beginner: "Explique-moi [CONCEPT CRYPTO : blockchain/wallet/token/DeFi] de façon très simple.\nUtilise des analogies du quotidien.\nJe suis complètement débutant en crypto. Réponds en {lang}.",
+    intermediate: "Explique le fonctionnement de [CONCEPT CRYPTO] sur la blockchain Solana.\nInclus les aspects techniques et pratiques.\nComment puis-je l'utiliser concrètement ? Réponds en {lang}.",
+    expert: "Analyse [PROTOCOLE/TOKEN/MÉCANISME] dans l'écosystème Solana :\n- Architecture technique\n- Tokenomics et mécanismes économiques\n- Risques et opportunités\n- Comparaison avec alternatives. Réponds en {lang}."
+  },
+  ai: {
+    beginner: "Explique-moi [CONCEPT IA : machine learning/LLM/neural network] de façon très simple.\nJe n'ai aucune connaissance technique.\nUtilise des exemples concrets de la vie quotidienne. Réponds en {lang}.",
+    intermediate: "Explique [CONCEPT IA] en détail :\n- Comment ça fonctionne\n- Quels sont les modèles principaux\n- Comment l'utiliser dans ma vie quotidienne\n- Les limites actuelles. Réponds en {lang}.",
+    expert: "Analyse en profondeur [CONCEPT/MODÈLE IA] :\n- Architecture et mécanismes techniques\n- Benchmark et comparaisons\n- Cas d'usage avancés\n- Tendances et recherches récentes\n- Implications éthiques. Réponds en {lang}."
+  }
+};
+
+var aiSuffix = {
+  chatgpt: "\n\n[À utiliser sur : https://chat.openai.com]",
+  claude: "\n\n[À utiliser sur : https://claude.ai]",
+  gemini: "\n\n[À utiliser sur : https://gemini.google.com]",
+  grok: "\n\n[À utiliser sur : https://grok.com]",
+  any: ""
+};
+
+function generatePrompt() {
+  var task = document.getElementById('pg-task').value;
+  var level = document.getElementById('pg-level').value;
+  var ai = document.getElementById('pg-ai').value;
+  var lang = document.getElementById('pg-lang').value;
+
+  var template = prompts[task][level];
+  var result = template.replace('{lang}', lang) + aiSuffix[ai];
+
+  document.getElementById('pg-result').textContent = result;
+}
+
+function copyPrompt() {
+  var text = document.getElementById('pg-result').textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.getElementById('pg-copy-btn');
+    btn.textContent = '✅ Copié !';
+    setTimeout(function() { btn.textContent = '📋 Copier le prompt'; }, 2000);
+  });
+}
+
+window.addEventListener('load', function() { generatePrompt(); });
+</script>
+
 <!-- CHATBOT FLOTTANT -->
 <div id="chat-bubble" onclick="toggleChat()" style="position:fixed;bottom:2rem;right:2rem;background:var(--accent);border-radius:100px;display:flex;align-items:center;gap:.5rem;padding:.75rem 1.2rem;cursor:pointer;z-index:999;box-shadow:0 0 24px rgba(79,255,176,.5);font-size:.85rem;font-weight:700;font-family:'Space Mono',monospace;color:#050f08;transition:transform .2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">🤖 <span>Chat $LAI</span></div>
 
@@ -1070,31 +1224,6 @@ window.addEventListener('load', function() { startQuiz(); });
   </div>
 </div>
 
-<!-- JUPITER SWAP WIDGET -->
-<div class="section" id="swap" style="max-width:860px;margin:0 auto 2rem;padding:0 2rem;position:relative;z-index:1;">
-  <h2 class="section-title">🔄 Acheter $LAI directement</h2>
-  <div style="display:flex;justify-content:center;">
-    <div id="integrated-terminal"></div>
-  </div>
-</div>
-
-<script>
-  window.addEventListener('load', function() {
-    if (window.Jupiter) {
-      window.Jupiter.init({
-        displayMode: "integrated",
-        integratedTargetId: "integrated-terminal",
-        endpoint: "https://mainnet.helius-rpc.com/?api-key=",
-        defaultExplorer: "Solscan",
-        formProps: {
-          initialInputMint: "So11111111111111111111111111111111111111112",
-          initialOutputMint: "FEb3iGcsk5HVKwzugWWSGgEhmxsj2h2P7NMjxWGwBTc5",
-        },
-      });
-    }
-  });
-</script>
-<script src="https://terminal.jup.ag/main-v2.js" data-preload></script>
 
 <!-- FOOTER -->
 <footer>
