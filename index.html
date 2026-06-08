@@ -18,7 +18,49 @@
       --muted: #5a7a65;
       --border: #162a1e;
     }
-
+<!-- TRADUCTEUR DE JARGON IA -->
+<div class="section" id="jargon">
+  <h2 class="section-title">📖 Traducteur de Jargon IA</h2>
+  <p style="color:var(--muted);font-size:.82rem;margin-bottom:1.5rem;">Un terme technique que tu ne comprends pas ? Tape-le et reçois une explication simple ! 🧠</p>
+  <div style="max-width:600px;margin:0 auto;">
+    <div style="display:flex;gap:.75rem;margin-bottom:1rem;">
+      <input id="jargon-input" type="text" placeholder="Ex: LLM, RAG, GPU, Neural Network..." style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;color:var(--text);font-family:'Space Mono',monospace;font-size:.8rem;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(79,255,176,.4)'" onblur="this.style.borderColor='var(--border)'" onkeypress="if(event.key==='Enter')translateJargon()" oninput="if(this.value.length>2)translateJargon()"/>
+      <button onclick="translateJargon()" style="background:var(--accent);color:#050f08;border:none;border-radius:8px;padding:.75rem 1.2rem;font-family:'Space Mono',monospace;font-size:.8rem;font-weight:700;cursor:pointer;">🔍</button>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;">
+      <span style="color:var(--muted);font-size:.7rem;align-self:center;">Populaires :</span>
+      <button onclick="quickSearch('LLM')" class="jargon-tag">LLM</button>
+      <button onclick="quickSearch('RAG')" class="jargon-tag">RAG</button>
+      <button onclick="quickSearch('GPU')" class="jargon-tag">GPU</button>
+      <button onclick="quickSearch('Token')" class="jargon-tag">Token</button>
+      <button onclick="quickSearch('Fine-tuning')" class="jargon-tag">Fine-tuning</button>
+      <button onclick="quickSearch('Hallucination')" class="jargon-tag">Hallucination</button>
+      <button onclick="quickSearch('Prompt')" class="jargon-tag">Prompt</button>
+      <button onclick="quickSearch('Blockchain')" class="jargon-tag">Blockchain</button>
+      <button onclick="quickSearch('Solana')" class="jargon-tag">Solana</button>
+      <button onclick="quickSearch('Wallet')" class="jargon-tag">Wallet</button>
+    </div>
+    <div id="jargon-result" style="display:none;background:var(--surface);border:1px solid rgba(79,255,176,.3);border-radius:12px;padding:1.5rem;">
+      <div id="jargon-term" style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.75rem;"></div>
+      <div id="jargon-simple" style="font-size:.9rem;line-height:1.7;margin-bottom:1rem;"></div>
+      <div id="jargon-analogy" style="background:rgba(79,255,176,.06);border-left:3px solid var(--accent);padding:.75rem 1rem;border-radius:0 8px 8px 0;font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;"></div>
+      <div id="jargon-example" style="font-size:.78rem;color:var(--muted);"></div>
+    </div>
+    <div id="jargon-notfound" style="display:none;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;color:var(--muted);font-size:.82rem;">
+      🤔 Terme non trouvé. Essaie le chatbot $LAI pour une explication personnalisée !
+    </div>
+  </div>
+</div>
+<style>
+.jargon-tag{background:rgba(79,255,176,.06);border:1px solid var(--border);border-radius:100px;color:var(--muted);padding:.3rem .8rem;font-family:'Space Mono',monospace;font-size:.68rem;cursor:pointer;transition:border-color .2s,color .2s;}
+.jargon-tag:hover{border-color:rgba(79,255,176,.4);color:var(--accent);}
+</style>
+<script>
+var jargonDB={"llm":{term:"LLM — Large Language Model",simple:"Un LLM est un programme entraîné sur des milliards de textes pour comprendre et générer du langage humain. ChatGPT, Claude, Gemini sont des LLMs.",analogy:"💡 Comme un étudiant qui a lu toutes les bibliothèques du monde.",example:"🔎 Exemples : GPT-4, Claude, Llama, Gemini"},"rag":{term:"RAG — Retrieval Augmented Generation",simple:"Technique qui permet à une IA de chercher des infos dans une base de données avant de répondre pour être plus précise.",analogy:"💡 Comme si l'IA ouvrait Google avant de répondre.",example:"🔎 Utilisé par : ChatGPT web, Perplexity AI"},"gpu":{term:"GPU — Graphics Processing Unit",simple:"Puce électronique ultra-puissante qui fait des millions de calculs en parallèle. Indispensable pour les IA.",analogy:"💡 Si le CPU est un expert qui fait une chose à la fois, le GPU est une armée de 1000 soldats.",example:"🔎 NVIDIA H100, A100 — utilisés dans les datacenters IA"},"token":{term:"Token (IA)",simple:"Unité de texte en IA — environ 3/4 d'un mot. Les LLMs lisent et génèrent du texte token par token.",analogy:"💡 Si le texte est un collier de perles, chaque perle est un token.",example:"🔎 1000 tokens ≈ 750 mots"},"fine-tuning":{term:"Fine-tuning",simple:"Prendre un modèle IA déjà entraîné et l'entraîner sur des données spécifiques pour le spécialiser.",analogy:"💡 Comme prendre un médecin généraliste et lui faire une spécialisation.",example:"🔎 Fine-tuner GPT sur des textes juridiques pour créer un assistant avocat"},"hallucination":{term:"Hallucination (IA)",simple:"Quand une IA invente des informations fausses mais les présente avec confiance comme vraies.",analogy:"💡 Quelqu'un qui invente une réponse convaincante au lieu d'admettre qu'il ne sait pas.",example:"🔎 L'IA cite des articles scientifiques qui n'existent pas"},"prompt":{term:"Prompt",simple:"L'instruction ou question que tu donnes à une IA. La qualité du prompt détermine la qualité de la réponse.",analogy:"💡 Comme donner une consigne à un stagiaire — plus c'est précis, mieux c'est.",example:"🔎 Mauvais: 'Parle-moi de l'IA' | Bon: 'Explique le ML en 3 points simples'"},"neural network":{term:"Neural Network — Réseau de Neurones",simple:"Système informatique inspiré du cerveau humain composé de nœuds connectés qui apprennent à partir d'exemples.",analogy:"💡 Comme le cerveau humain avec ses neurones connectés.",example:"🔎 Utilisé pour : reconnaissance d'images, traduction, génération de texte"},"blockchain":{term:"Blockchain",simple:"Base de données décentralisée partagée entre des milliers d'ordinateurs. Chaque transaction est enregistrée et impossible à modifier.",analogy:"💡 Un cahier de comptes partagé avec tout le monde — lisible par tous, modifiable par personne.",example:"🔎 Bitcoin, Ethereum, Solana (sur laquelle est $LAI !)"},"defi":{term:"DeFi — Decentralized Finance",simple:"La finance sans banque. Des protocoles remplacent les banques pour prêter, emprunter et échanger des cryptos automatiquement.",analogy:"💡 Au lieu d'aller à la banque, tu interagis avec un programme automatique.",example:"🔎 Uniswap, Aave, Raydium, Jupiter (Solana)"},"solana":{term:"Solana",simple:"Blockchain ultra-rapide capable de 65 000 transactions/seconde avec des frais quasi-nuls. C'est la blockchain de $LAI !",analogy:"💡 Si Bitcoin est un vélo et Ethereum une voiture, Solana est un avion supersonique.",example:"🔎 $LAI est sur Solana ! CA: FEb3iGcsk5HVKwzugWWSGgEhmxsj2h2P7NMjxWGwBTc5"},"wallet":{term:"Wallet — Portefeuille Crypto",simple:"Application qui stocke tes clés cryptographiques pour accéder à tes cryptomonnaies.",analogy:"💡 Pas un vrai portefeuille — plutôt un trousseau de clés pour ton coffre sur la blockchain.",example:"🔎 Phantom (Solana), MetaMask (Ethereum), Ledger (hardware)"}};
+function translateJargon(){var i=document.getElementById('jargon-input').value.toLowerCase().trim();var r=jargonDB[i];if(!r){for(var k in jargonDB){if(k.includes(i)||i.includes(k)){r=jargonDB[k];break;}}}if(r){document.getElementById('jargon-notfound').style.display='none';document.getElementById('jargon-result').style.display='block';document.getElementById('jargon-term').textContent=r.term;document.getElementById('jargon-simple').textContent=r.simple;document.getElementById('jargon-analogy').textContent=r.analogy;document.getElementById('jargon-example').textContent=r.example;}else{document.getElementById('jargon-result').style.display='none';document.getElementById('jargon-notfound').style.display='block';}}
+function quickSearch(t){document.getElementById('jargon-input').value=t;translateJargon();}
+</script>
+  <!-- GÉNÉRATEUR DE PROMPT -->
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
