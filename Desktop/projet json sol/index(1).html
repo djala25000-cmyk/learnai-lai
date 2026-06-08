@@ -455,18 +455,6 @@
   <a href="https://pump.fun/coin/DgaQtZvWN8hf52H4pjsossbLqvQPFqM9ZpQxhS2fpump" target="_blank" class="social-pill">🟢 Pump.fun</a>
 </div>
 
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-inner">
-    <span>$LAI 🚀</span><span>100 000 000 000 SUPPLY</span><span>0% TAXES</span>
-    <span>LIQUIDITY LOCKED 🔒</span><span>MINT REVOKED ✅</span><span>SOLANA ⚡</span>
-    <span>COMMUNITY FIRST 🐸</span><span>BASED & BULLISH</span>
-    <span>$LAI 🚀</span><span>100 000 000 000 SUPPLY</span><span>0% TAXES</span>
-    <span>LIQUIDITY LOCKED 🔒</span><span>MINT REVOKED ✅</span><span>SOLANA ⚡</span>
-    <span>COMMUNITY FIRST 🐸</span><span>BASED & BULLISH</span>
-  </div>
-</div>
-
 <!-- STATS -->
 <div class="stats">
   <div class="stat">
@@ -486,309 +474,6 @@
     <div class="stat-label" data-i18n="stat_chain">Blockchain</div>
   </div>
 </div>
-
-<!-- TOKENOMICS -->
-<section class="section" id="tokenomics">
-  <h2 class="section-title" data-i18n="section_tokenomics">Tokenomics</h2>
-  <div class="tokenomics-grid">
-    <div class="token-card">
-      <div class="token-card-icon">💧</div>
-      <div class="token-card-title" data-i18n="tok_liq_title">Liquidité</div>
-      <div class="token-card-pct">80%</div>
-      <div class="token-card-desc" data-i18n="tok_liq_desc">Pool de liquidité — verrouillée pour toujours</div>
-    </div>
-    <div class="token-card">
-      <div class="token-card-icon">📣</div>
-      <div class="token-card-title" data-i18n="tok_mkt_title">Marketing</div>
-      <div class="token-card-pct">10%</div>
-      <div class="token-card-desc" data-i18n="tok_mkt_desc">Promotions, partenariats, campagnes</div>
-    </div>
-    <div class="token-card">
-      <div class="token-card-icon">🏆</div>
-      <div class="token-card-title" data-i18n="tok_team_title">Équipe</div>
-      <div class="token-card-pct">5%</div>
-      <div class="token-card-desc" data-i18n="tok_team_desc">Vesting sur 12 mois</div>
-    </div>
-    <div class="token-card">
-      <div class="token-card-icon">🎁</div>
-      <div class="token-card-title" data-i18n="tok_air_title">Airdrop</div>
-      <div class="token-card-pct">5%</div>
-      <div class="token-card-desc" data-i18n="tok_air_desc">Récompenses communautaires</div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW TO BUY -->
-<section class="section" id="buy">
-  <h2 class="section-title" data-i18n="section_buy">Comment acheter</h2>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-content">
-        <h3 data-i18n="step1_title">Crée un wallet Phantom</h3>
-        <p data-i18n="step1_desc">Télécharge l'extension Phantom sur <strong>phantom.app</strong> et crée un nouveau wallet Solana. Garde ta seed phrase en sécurité.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-content">
-        <h3 data-i18n="step2_title">Achète du SOL</h3>
-        <p data-i18n="step2_desc">Achète du SOL sur Coinbase, Binance ou Kraken, puis transfère-le vers ton wallet Phantom.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-content">
-        <h3 data-i18n="step3_title">Swap sur Raydium ou Jupiter</h3>
-        <p data-i18n="step3_desc">Va sur <strong>raydium.io</strong> ou <strong>jup.ag</strong>, colle l'adresse du contrat $LAI et swap tes SOL contre $LAI.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-content">
-        <h3 data-i18n="step4_title">🎉 Bienvenue dans la communauté !</h3>
-        <p data-i18n="step4_desc">Tes $LAI apparaissent automatiquement dans ton wallet Phantom. HODL fort ! 🙌</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GÉNÉRATEUR DE PROMPT -->
-<div class="section" id="prompt-gen">
-  <h2 class="section-title">⚡ Générateur de Prompt IA</h2>
-  <p style="color:var(--muted);font-size:.82rem;margin-bottom:2rem;">Génère le prompt parfait pour n'importe quelle IA en quelques clics !</p>
-
-  <div style="max-width:700px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
-
-    <!-- Tâche -->
-    <div>
-      <div style="color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">1. Je veux...</div>
-      <select id="pg-task" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:.75rem 1rem;font-family:'Space Mono',monospace;font-size:.78rem;cursor:pointer;outline:none;" onchange="generatePrompt()">
-        <option value="email">✉️ Écrire un email professionnel</option>
-        <option value="code">💻 Créer du code</option>
-        <option value="content">📝 Créer du contenu (post, article)</option>
-        <option value="analyze">🔍 Analyser un texte ou document</option>
-        <option value="translate">🌍 Traduire un texte</option>
-        <option value="summarize">📋 Résumer un contenu</option>
-        <option value="idea">💡 Trouver des idées</option>
-        <option value="learn">🎓 Apprendre un concept</option>
-        <option value="crypto">🪙 Comprendre la crypto / $LAI</option>
-        <option value="ai">🤖 Comprendre l'IA</option>
-      </select>
-    </div>
-
-    <!-- IA cible -->
-    <div>
-      <div style="color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">2. Pour quelle IA ?</div>
-      <select id="pg-ai" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:.75rem 1rem;font-family:'Space Mono',monospace;font-size:.78rem;cursor:pointer;outline:none;" onchange="generatePrompt()">
-        <option value="chatgpt">🤖 ChatGPT</option>
-        <option value="claude">🎓 Claude</option>
-        <option value="gemini">🔍 Gemini</option>
-        <option value="grok">⚡ Grok</option>
-        <option value="any">✨ N'importe laquelle</option>
-      </select>
-    </div>
-
-    <!-- Niveau -->
-    <div>
-      <div style="color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">3. Mon niveau</div>
-      <select id="pg-level" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:.75rem 1rem;font-family:'Space Mono',monospace;font-size:.78rem;cursor:pointer;outline:none;" onchange="generatePrompt()">
-        <option value="beginner">🐣 Débutant</option>
-        <option value="intermediate">📚 Intermédiaire</option>
-        <option value="expert">🚀 Expert</option>
-      </select>
-    </div>
-
-    <!-- Langue de sortie -->
-    <div>
-      <div style="color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">4. Langue de la réponse</div>
-      <select id="pg-lang" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:.75rem 1rem;font-family:'Space Mono',monospace;font-size:.78rem;cursor:pointer;outline:none;" onchange="generatePrompt()">
-        <option value="français">🇫🇷 Français</option>
-        <option value="English">🇬🇧 English</option>
-        <option value="Deutsch">🇩🇪 Deutsch</option>
-        <option value="Español">🇪🇸 Español</option>
-        <option value="中文">🇨🇳 中文</option>
-        <option value="العربية">🇸🇦 العربية</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- Résultat -->
-  <div style="max-width:700px;margin:0 auto;">
-    <div style="color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">✅ Ton prompt généré :</div>
-    <div id="pg-result" style="background:var(--surface);border:1px solid rgba(79,255,176,.3);border-radius:12px;padding:1.5rem;font-size:.82rem;line-height:1.7;min-height:120px;white-space:pre-wrap;"></div>
-    <button onclick="copyPrompt()" id="pg-copy-btn" style="margin-top:1rem;background:rgba(79,255,176,.1);border:1px solid rgba(79,255,176,.25);color:var(--accent);padding:.6rem 1.4rem;border-radius:8px;font-family:'Space Mono',monospace;font-size:.75rem;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='rgba(79,255,176,.2)'" onmouseout="this.style.background='rgba(79,255,176,.1)'">📋 Copier le prompt</button>
-  </div>
-</div>
-
-<script>
-var prompts = {
-  email: {
-    beginner: "Tu es un expert en communication professionnelle.\nÉcris-moi un email formel pour [DESTINATAIRE] concernant [SUJET].\nLe ton doit être professionnel et concis. Maximum 200 mots.\nRéponds en {lang}.",
-    intermediate: "Tu es un expert en communication d'entreprise.\nRédige un email professionnel avec :\n- Objet : [OBJET DE L'EMAIL]\n- Destinataire : [NOM/POSTE]\n- Message principal : [CONTENU]\n- Appel à l'action clair\nAdapte le ton selon le contexte. Réponds en {lang}.",
-    expert: "En tant qu'expert en communication stratégique, rédige un email de [TYPE : négociation/partenariat/relance] pour [DESTINATAIRE].\nIntègre les techniques de persuasion, un hook d'accroche fort et un CTA précis.\nContexte : [CONTEXTE]. Réponds en {lang}."
-  },
-  code: {
-    beginner: "Tu es un développeur pédagogue.\nExplique-moi comment créer [CE QUE JE VEUX CRÉER] en [LANGAGE].\nDonne-moi le code étape par étape avec des commentaires.\nJe suis débutant. Réponds en {lang}.",
-    intermediate: "Tu es un développeur senior.\nCrée un [TYPE DE CODE] en [LANGAGE] qui [FONCTIONNALITÉ].\nLe code doit être propre, commenté et suivre les bonnes pratiques.\nContexte : [CONTEXTE]. Réponds en {lang}.",
-    expert: "En tant qu'architecte logiciel, implémente [FONCTIONNALITÉ] en [LANGAGE] en utilisant [PATTERN/FRAMEWORK].\nOptimise pour la performance et la maintenabilité.\nInclude les tests unitaires. Contexte : [CONTEXTE]. Réponds en {lang}."
-  },
-  content: {
-    beginner: "Tu es un créateur de contenu.\nÉcris un post pour [PLATEFORME : Twitter/LinkedIn/Instagram] sur [SUJET].\nLe ton doit être simple et engageant. Maximum [NOMBRE] mots.\nRéponds en {lang}.",
-    intermediate: "Tu es un expert en marketing de contenu.\nCrée un [POST/ARTICLE/THREAD] sur [SUJET] pour [AUDIENCE CIBLE].\nInclus un hook accrocheur, 3 points clés et un CTA.\nTon : [PROFESSIONNEL/DÉCONTRACTÉ/INSPIRANT]. Réponds en {lang}.",
-    expert: "En tant que stratège de contenu, crée une campagne de contenu pour [SUJET] incluant :\n- 1 post long LinkedIn\n- 5 tweets pour un thread\n- 1 description Instagram\nCible : [AUDIENCE]. Objectif : [ENGAGEMENT/CONVERSION/NOTORIÉTÉ]. Réponds en {lang}."
-  },
-  analyze: {
-    beginner: "Analyse ce texte et explique-moi les points principaux de façon simple :\n[COLLE TON TEXTE ICI]\nDonne-moi un résumé en 3 points. Réponds en {lang}.",
-    intermediate: "Effectue une analyse approfondie de ce contenu :\n[CONTENU]\nIdentifie : les idées principales, les arguments, les points forts et faibles.\nStructure ta réponse clairement. Réponds en {lang}.",
-    expert: "Réalise une analyse critique et stratégique de [DOCUMENT/TEXTE/DONNÉES] :\n[CONTENU]\nÉvalue : la logique argumentative, les biais potentiels, les implications stratégiques.\nFournis des recommandations actionnables. Réponds en {lang}."
-  },
-  translate: {
-    beginner: "Traduis ce texte en [LANGUE CIBLE] de façon simple et naturelle :\n[TEXTE À TRADUIRE]\nSi un mot est difficile, explique-le. Réponds en {lang}.",
-    intermediate: "Traduis ce texte en [LANGUE CIBLE] en préservant le ton et le style original :\n[TEXTE]\nAdapte les expressions culturelles si nécessaire. Réponds en {lang}.",
-    expert: "Réalise une traduction professionnelle de [LANGUE SOURCE] vers [LANGUE CIBLE] :\n[TEXTE]\nPreserve le registre linguistique, les nuances culturelles et le style.\nFournis des notes de traducteur si nécessaire. Réponds en {lang}."
-  },
-  summarize: {
-    beginner: "Résume ce contenu en 5 points simples et clairs :\n[CONTENU À RÉSUMER]\nUtilise des mots simples. Réponds en {lang}.",
-    intermediate: "Crée un résumé structuré de ce contenu :\n[CONTENU]\nFormat : Introduction (2 phrases), Points clés (5 bullets), Conclusion.\nRéponds en {lang}.",
-    expert: "Produis un executive summary de [DOCUMENT/RAPPORT] :\n[CONTENU]\nInclus : contexte, enjeux stratégiques, points critiques, recommandations.\nMaximum 300 mots. Réponds en {lang}."
-  },
-  idea: {
-    beginner: "Génère 10 idées créatives pour [SUJET/PROJET].\nLes idées doivent être simples et réalisables.\nExplique brièvement chaque idée. Réponds en {lang}.",
-    intermediate: "Brainstorme 15 idées innovantes pour [SUJET] en tenant compte de [CONTRAINTES].\nClassifie-les par : facilité de mise en œuvre et impact potentiel.\nRéponds en {lang}.",
-    expert: "Conduis un brainstorming stratégique sur [PROBLÈME/OPPORTUNITÉ] :\nUtilise la méthode SCAMPER (Substitute, Combine, Adapt, Modify, Put to other uses, Eliminate, Reverse).\nFournis 3 idées disruptives avec leur plan d'action. Réponds en {lang}."
-  },
-  learn: {
-    beginner: "Explique-moi [CONCEPT] comme si j'avais 10 ans.\nUtilise des exemples du quotidien et des analogies simples.\nÉvite le jargon technique. Réponds en {lang}.",
-    intermediate: "Explique [CONCEPT] avec :\n1. La définition claire\n2. Comment ça fonctionne\n3. Un exemple concret\n4. Les cas d'usage pratiques\nNiveau : intermédiaire. Réponds en {lang}.",
-    expert: "Fournis une explication experte de [CONCEPT] incluant :\n- Les fondements théoriques\n- Les mécanismes avancés\n- Les cas limites et exceptions\n- Les dernières avancées dans le domaine\n- Les ressources pour approfondir. Réponds en {lang}."
-  },
-  crypto: {
-    beginner: "Explique-moi [CONCEPT CRYPTO : blockchain/wallet/token/DeFi] de façon très simple.\nUtilise des analogies du quotidien.\nJe suis complètement débutant en crypto. Réponds en {lang}.",
-    intermediate: "Explique le fonctionnement de [CONCEPT CRYPTO] sur la blockchain Solana.\nInclus les aspects techniques et pratiques.\nComment puis-je l'utiliser concrètement ? Réponds en {lang}.",
-    expert: "Analyse [PROTOCOLE/TOKEN/MÉCANISME] dans l'écosystème Solana :\n- Architecture technique\n- Tokenomics et mécanismes économiques\n- Risques et opportunités\n- Comparaison avec alternatives. Réponds en {lang}."
-  },
-  ai: {
-    beginner: "Explique-moi [CONCEPT IA : machine learning/LLM/neural network] de façon très simple.\nJe n'ai aucune connaissance technique.\nUtilise des exemples concrets de la vie quotidienne. Réponds en {lang}.",
-    intermediate: "Explique [CONCEPT IA] en détail :\n- Comment ça fonctionne\n- Quels sont les modèles principaux\n- Comment l'utiliser dans ma vie quotidienne\n- Les limites actuelles. Réponds en {lang}.",
-    expert: "Analyse en profondeur [CONCEPT/MODÈLE IA] :\n- Architecture et mécanismes techniques\n- Benchmark et comparaisons\n- Cas d'usage avancés\n- Tendances et recherches récentes\n- Implications éthiques. Réponds en {lang}."
-  }
-};
-
-var aiSuffix = {
-  chatgpt: "\n\n[À utiliser sur : https://chat.openai.com]",
-  claude: "\n\n[À utiliser sur : https://claude.ai]",
-  gemini: "\n\n[À utiliser sur : https://gemini.google.com]",
-  grok: "\n\n[À utiliser sur : https://grok.com]",
-  any: ""
-};
-
-function generatePrompt() {
-  var task = document.getElementById('pg-task').value;
-  var level = document.getElementById('pg-level').value;
-  var ai = document.getElementById('pg-ai').value;
-  var lang = document.getElementById('pg-lang').value;
-
-  var template = prompts[task][level];
-  var result = template.replace('{lang}', lang) + aiSuffix[ai];
-
-  document.getElementById('pg-result').textContent = result;
-}
-
-function copyPrompt() {
-  var text = document.getElementById('pg-result').textContent;
-  navigator.clipboard.writeText(text).then(function() {
-    var btn = document.getElementById('pg-copy-btn');
-    btn.textContent = '✅ Copié !';
-    setTimeout(function() { btn.textContent = '📋 Copier le prompt'; }, 2000);
-  });
-}
-
-window.addEventListener('load', function() { generatePrompt(); });
-</script>
-
-<!-- CHATBOT FLOTTANT -->
-<div id="chat-bubble" onclick="toggleChat()" style="position:fixed;bottom:2rem;right:2rem;background:var(--accent);border-radius:100px;display:flex;align-items:center;gap:.5rem;padding:.75rem 1.2rem;cursor:pointer;z-index:999;box-shadow:0 0 24px rgba(79,255,176,.5);font-size:.85rem;font-weight:700;font-family:'Space Mono',monospace;color:#050f08;transition:transform .2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">🤖 <span>Chat $LAI</span></div>
-
-<div id="chat-window" style="display:none;position:fixed;bottom:6rem;right:2rem;width:340px;background:var(--surface);border:1px solid rgba(79,255,176,.3);border-radius:16px;z-index:998;box-shadow:0 8px 40px rgba(0,0,0,.4);overflow:hidden;flex-direction:column;">
-  <div style="background:rgba(79,255,176,.1);padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);">
-    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;">💬 Assistant $LAI</div>
-    <button onclick="toggleChat()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.1rem;">✕</button>
-  </div>
-  <div id="chat-messages" style="padding:1rem;height:280px;overflow-y:auto;display:flex;flex-direction:column;gap:.75rem;">
-    <div id="chat-welcome" style="background:rgba(79,255,176,.08);border:1px solid rgba(79,255,176,.2);border-radius:8px;padding:.75rem;font-size:.78rem;line-height:1.6;max-width:90%;">
-      👋 Bonjour ! Je suis l'assistant $LAI. Pose-moi n'importe quelle question sur l'IA ou sur $LAI !
-    </div>
-  </div>
-  <div style="padding:.75rem;border-top:1px solid var(--border);display:flex;gap:.5rem;">
-    <input id="chat-input" type="text" placeholder="Pose ta question..." id="chat-input" style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.6rem .8rem;color:var(--text);font-family:'Space Mono',monospace;font-size:.75rem;outline:none;" onkeypress="if(event.key==='Enter')sendChat()" onfocus="this.style.borderColor='rgba(79,255,176,.4)'" onblur="this.style.borderColor='var(--border)'"/>
-    <button onclick="sendChat()" style="background:var(--accent);color:#050f08;border:none;border-radius:8px;padding:.6rem .9rem;font-weight:700;cursor:pointer;font-size:.8rem;">➤</button>
-  </div>
-  <div style="text-align:center;padding:.4rem;color:var(--muted);font-size:.6rem;">⚡ Propulsé par Groq IA</div>
-</div>
-
-<script>
-var chatTranslations = {
-  fr: { welcome: "👋 Bonjour ! Je suis l'assistant $LAI. Pose-moi n'importe quelle question sur l'IA ou sur $LAI !", placeholder: "Pose ta question...", title: "💬 Assistant $LAI", typing: "⏳ Réflexion en cours...", error: "❌ Erreur. Réessaie !", powered: "⚡ Propulsé par Groq IA" },
-  en: { welcome: "👋 Hello! I'm the $LAI assistant. Ask me anything about AI or $LAI!", placeholder: "Ask your question...", title: "💬 $LAI Assistant", typing: "⏳ Thinking...", error: "❌ Error. Try again!", powered: "⚡ Powered by Groq AI" },
-  de: { welcome: "👋 Hallo! Ich bin der $LAI-Assistent. Frag mich alles über KI oder $LAI!", placeholder: "Stell deine Frage...", title: "💬 $LAI Assistent", typing: "⏳ Denke nach...", error: "❌ Fehler. Versuch es nochmal!", powered: "⚡ Betrieben von Groq KI" },
-  es: { welcome: "👋 ¡Hola! Soy el asistente $LAI. ¡Pregúntame cualquier cosa sobre IA o $LAI!", placeholder: "Haz tu pregunta...", title: "💬 Asistente $LAI", typing: "⏳ Pensando...", error: "❌ Error. ¡Inténtalo de nuevo!", powered: "⚡ Impulsado por Groq IA" },
-  zh: { welcome: "👋 你好！我是$LAI助手。问我任何关于AI或$LAI的问题！", placeholder: "提出你的问题...", title: "💬 $LAI 助手", typing: "⏳ 思考中...", error: "❌ 错误，请重试！", powered: "⚡ 由Groq AI驱动" },
-  ar: { welcome: "👋 مرحباً! أنا مساعد $LAI. اسألني أي شيء عن الذكاء الاصطناعي أو $LAI!", placeholder: "اطرح سؤالك...", title: "💬 مساعد $LAI", typing: "⏳ جارٍ التفكير...", error: "❌ خطأ. حاول مرة أخرى!", powered: "⚡ مدعوم بواسطة Groq AI" }
-};
-
-function updateChatLang() {
-  var t = chatTranslations[currentLang] || chatTranslations['en'];
-  var welcome = document.getElementById('chat-welcome');
-  var input = document.getElementById('chat-input');
-  var title = document.querySelector('#chat-window div span');
-  if (welcome) welcome.textContent = t.welcome;
-  if (input) input.placeholder = t.placeholder;
-}
-
-function toggleChat() {
-  var win = document.getElementById('chat-window');
-  win.style.display = win.style.display === 'none' ? 'flex' : 'none';
-  if (win.style.display === 'flex') {
-    updateChatLang();
-    document.getElementById('chat-input').focus();
-  }
-}
-
-async function sendChat() {
-  var input = document.getElementById('chat-input');
-  var messages = document.getElementById('chat-messages');
-  var msg = input.value.trim();
-  if (!msg) return;
-
-  var userDiv = document.createElement('div');
-  userDiv.style.cssText = 'background:rgba(79,255,176,.12);border:1px solid rgba(79,255,176,.25);border-radius:8px;padding:.75rem;font-size:.78rem;line-height:1.6;max-width:90%;align-self:flex-end;margin-left:auto;';
-  userDiv.textContent = msg;
-  messages.appendChild(userDiv);
-  input.value = '';
-  messages.scrollTop = messages.scrollHeight;
-
-  var typingDiv = document.createElement('div');
-  typingDiv.style.cssText = 'background:rgba(79,255,176,.08);border:1px solid rgba(79,255,176,.2);border-radius:8px;padding:.75rem;font-size:.78rem;color:var(--muted);max-width:90%;';
-  typingDiv.textContent = '⏳ Réflexion en cours...';
-  messages.appendChild(typingDiv);
-  messages.scrollTop = messages.scrollHeight;
-
-  try {
-    var response = await fetch('/.netlify/functions/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: msg })
-    });
-    var data = await response.json();
-    typingDiv.style.color = 'var(--text)';
-    typingDiv.textContent = '🤖 ' + data.reply;
-  } catch(e) {
-    typingDiv.textContent = '❌ Erreur. Réessaie !';
-  }
-  messages.scrollTop = messages.scrollHeight;
-}
-</script>
 
 <!-- QUIZ IA -->
 <div class="section" id="quiz">
@@ -1212,6 +897,226 @@ window.addEventListener('load', function() { startQuiz(); });
 
 </script>
 
+<!-- GÉNÉRATEUR DE PROMPT -->
+<div class="section" id="prompt-gen">
+  <h2 class="section-title">⚡ Générateur de Prompt IA</h2>
+  <p style="color:var(--muted);font-size:.82rem;margin-bottom:2rem;">Génère le prompt parfait pour n'importe quelle IA en quelques clics !</p>
+
+  <div style="max-width:700px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+
+    <!-- Tâche -->
+    <div>
+      <div style="color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">1. Je veux...</div>
+      <select id="pg-task" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:.75rem 1rem;font-family:'Space Mono',monospace;font-size:.78rem;cursor:pointer;outline:none;" onchange="generatePrompt()">
+        <option value="email">✉️ Écrire un email professionnel</option>
+        <option value="code">💻 Créer du code</option>
+        <option value="content">📝 Créer du contenu (post, article)</option>
+        <option value="analyze">🔍 Analyser un texte ou document</option>
+        <option value="translate">🌍 Traduire un texte</option>
+        <option value="summarize">📋 Résumer un contenu</option>
+        <option value="idea">💡 Trouver des idées</option>
+        <option value="learn">🎓 Apprendre un concept</option>
+        <option value="crypto">🪙 Comprendre la crypto / $LAI</option>
+        <option value="ai">🤖 Comprendre l'IA</option>
+      </select>
+    </div>
+
+    <!-- IA cible -->
+    <div>
+      <div style="color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">2. Pour quelle IA ?</div>
+      <select id="pg-ai" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:.75rem 1rem;font-family:'Space Mono',monospace;font-size:.78rem;cursor:pointer;outline:none;" onchange="generatePrompt()">
+        <option value="chatgpt">🤖 ChatGPT</option>
+        <option value="claude">🎓 Claude</option>
+        <option value="gemini">🔍 Gemini</option>
+        <option value="grok">⚡ Grok</option>
+        <option value="any">✨ N'importe laquelle</option>
+      </select>
+    </div>
+
+    <!-- Niveau -->
+    <div>
+      <div style="color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">3. Mon niveau</div>
+      <select id="pg-level" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:.75rem 1rem;font-family:'Space Mono',monospace;font-size:.78rem;cursor:pointer;outline:none;" onchange="generatePrompt()">
+        <option value="beginner">🐣 Débutant</option>
+        <option value="intermediate">📚 Intermédiaire</option>
+        <option value="expert">🚀 Expert</option>
+      </select>
+    </div>
+
+    <!-- Langue de sortie -->
+    <div>
+      <div style="color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">4. Langue de la réponse</div>
+      <select id="pg-lang" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:.75rem 1rem;font-family:'Space Mono',monospace;font-size:.78rem;cursor:pointer;outline:none;" onchange="generatePrompt()">
+        <option value="français">🇫🇷 Français</option>
+        <option value="English">🇬🇧 English</option>
+        <option value="Deutsch">🇩🇪 Deutsch</option>
+        <option value="Español">🇪🇸 Español</option>
+        <option value="中文">🇨🇳 中文</option>
+        <option value="العربية">🇸🇦 العربية</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Résultat -->
+  <div style="max-width:700px;margin:0 auto;">
+    <div style="color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">✅ Ton prompt généré :</div>
+    <div id="pg-result" style="background:var(--surface);border:1px solid rgba(79,255,176,.3);border-radius:12px;padding:1.5rem;font-size:.82rem;line-height:1.7;min-height:120px;white-space:pre-wrap;"></div>
+    <button onclick="copyPrompt()" id="pg-copy-btn" style="margin-top:1rem;background:rgba(79,255,176,.1);border:1px solid rgba(79,255,176,.25);color:var(--accent);padding:.6rem 1.4rem;border-radius:8px;font-family:'Space Mono',monospace;font-size:.75rem;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='rgba(79,255,176,.2)'" onmouseout="this.style.background='rgba(79,255,176,.1)'">📋 Copier le prompt</button>
+  </div>
+</div>
+
+<script>
+var prompts = {
+  email: {
+    beginner: "Tu es un expert en communication professionnelle.\nÉcris-moi un email formel pour [DESTINATAIRE] concernant [SUJET].\nLe ton doit être professionnel et concis. Maximum 200 mots.\nRéponds en {lang}.",
+    intermediate: "Tu es un expert en communication d'entreprise.\nRédige un email professionnel avec :\n- Objet : [OBJET DE L'EMAIL]\n- Destinataire : [NOM/POSTE]\n- Message principal : [CONTENU]\n- Appel à l'action clair\nAdapte le ton selon le contexte. Réponds en {lang}.",
+    expert: "En tant qu'expert en communication stratégique, rédige un email de [TYPE : négociation/partenariat/relance] pour [DESTINATAIRE].\nIntègre les techniques de persuasion, un hook d'accroche fort et un CTA précis.\nContexte : [CONTEXTE]. Réponds en {lang}."
+  },
+  code: {
+    beginner: "Tu es un développeur pédagogue.\nExplique-moi comment créer [CE QUE JE VEUX CRÉER] en [LANGAGE].\nDonne-moi le code étape par étape avec des commentaires.\nJe suis débutant. Réponds en {lang}.",
+    intermediate: "Tu es un développeur senior.\nCrée un [TYPE DE CODE] en [LANGAGE] qui [FONCTIONNALITÉ].\nLe code doit être propre, commenté et suivre les bonnes pratiques.\nContexte : [CONTEXTE]. Réponds en {lang}.",
+    expert: "En tant qu'architecte logiciel, implémente [FONCTIONNALITÉ] en [LANGAGE] en utilisant [PATTERN/FRAMEWORK].\nOptimise pour la performance et la maintenabilité.\nInclude les tests unitaires. Contexte : [CONTEXTE]. Réponds en {lang}."
+  },
+  content: {
+    beginner: "Tu es un créateur de contenu.\nÉcris un post pour [PLATEFORME : Twitter/LinkedIn/Instagram] sur [SUJET].\nLe ton doit être simple et engageant. Maximum [NOMBRE] mots.\nRéponds en {lang}.",
+    intermediate: "Tu es un expert en marketing de contenu.\nCrée un [POST/ARTICLE/THREAD] sur [SUJET] pour [AUDIENCE CIBLE].\nInclus un hook accrocheur, 3 points clés et un CTA.\nTon : [PROFESSIONNEL/DÉCONTRACTÉ/INSPIRANT]. Réponds en {lang}.",
+    expert: "En tant que stratège de contenu, crée une campagne de contenu pour [SUJET] incluant :\n- 1 post long LinkedIn\n- 5 tweets pour un thread\n- 1 description Instagram\nCible : [AUDIENCE]. Objectif : [ENGAGEMENT/CONVERSION/NOTORIÉTÉ]. Réponds en {lang}."
+  },
+  analyze: {
+    beginner: "Analyse ce texte et explique-moi les points principaux de façon simple :\n[COLLE TON TEXTE ICI]\nDonne-moi un résumé en 3 points. Réponds en {lang}.",
+    intermediate: "Effectue une analyse approfondie de ce contenu :\n[CONTENU]\nIdentifie : les idées principales, les arguments, les points forts et faibles.\nStructure ta réponse clairement. Réponds en {lang}.",
+    expert: "Réalise une analyse critique et stratégique de [DOCUMENT/TEXTE/DONNÉES] :\n[CONTENU]\nÉvalue : la logique argumentative, les biais potentiels, les implications stratégiques.\nFournis des recommandations actionnables. Réponds en {lang}."
+  },
+  translate: {
+    beginner: "Traduis ce texte en [LANGUE CIBLE] de façon simple et naturelle :\n[TEXTE À TRADUIRE]\nSi un mot est difficile, explique-le. Réponds en {lang}.",
+    intermediate: "Traduis ce texte en [LANGUE CIBLE] en préservant le ton et le style original :\n[TEXTE]\nAdapte les expressions culturelles si nécessaire. Réponds en {lang}.",
+    expert: "Réalise une traduction professionnelle de [LANGUE SOURCE] vers [LANGUE CIBLE] :\n[TEXTE]\nPreserve le registre linguistique, les nuances culturelles et le style.\nFournis des notes de traducteur si nécessaire. Réponds en {lang}."
+  },
+  summarize: {
+    beginner: "Résume ce contenu en 5 points simples et clairs :\n[CONTENU À RÉSUMER]\nUtilise des mots simples. Réponds en {lang}.",
+    intermediate: "Crée un résumé structuré de ce contenu :\n[CONTENU]\nFormat : Introduction (2 phrases), Points clés (5 bullets), Conclusion.\nRéponds en {lang}.",
+    expert: "Produis un executive summary de [DOCUMENT/RAPPORT] :\n[CONTENU]\nInclus : contexte, enjeux stratégiques, points critiques, recommandations.\nMaximum 300 mots. Réponds en {lang}."
+  },
+  idea: {
+    beginner: "Génère 10 idées créatives pour [SUJET/PROJET].\nLes idées doivent être simples et réalisables.\nExplique brièvement chaque idée. Réponds en {lang}.",
+    intermediate: "Brainstorme 15 idées innovantes pour [SUJET] en tenant compte de [CONTRAINTES].\nClassifie-les par : facilité de mise en œuvre et impact potentiel.\nRéponds en {lang}.",
+    expert: "Conduis un brainstorming stratégique sur [PROBLÈME/OPPORTUNITÉ] :\nUtilise la méthode SCAMPER (Substitute, Combine, Adapt, Modify, Put to other uses, Eliminate, Reverse).\nFournis 3 idées disruptives avec leur plan d'action. Réponds en {lang}."
+  },
+  learn: {
+    beginner: "Explique-moi [CONCEPT] comme si j'avais 10 ans.\nUtilise des exemples du quotidien et des analogies simples.\nÉvite le jargon technique. Réponds en {lang}.",
+    intermediate: "Explique [CONCEPT] avec :\n1. La définition claire\n2. Comment ça fonctionne\n3. Un exemple concret\n4. Les cas d'usage pratiques\nNiveau : intermédiaire. Réponds en {lang}.",
+    expert: "Fournis une explication experte de [CONCEPT] incluant :\n- Les fondements théoriques\n- Les mécanismes avancés\n- Les cas limites et exceptions\n- Les dernières avancées dans le domaine\n- Les ressources pour approfondir. Réponds en {lang}."
+  },
+  crypto: {
+    beginner: "Explique-moi [CONCEPT CRYPTO : blockchain/wallet/token/DeFi] de façon très simple.\nUtilise des analogies du quotidien.\nJe suis complètement débutant en crypto. Réponds en {lang}.",
+    intermediate: "Explique le fonctionnement de [CONCEPT CRYPTO] sur la blockchain Solana.\nInclus les aspects techniques et pratiques.\nComment puis-je l'utiliser concrètement ? Réponds en {lang}.",
+    expert: "Analyse [PROTOCOLE/TOKEN/MÉCANISME] dans l'écosystème Solana :\n- Architecture technique\n- Tokenomics et mécanismes économiques\n- Risques et opportunités\n- Comparaison avec alternatives. Réponds en {lang}."
+  },
+  ai: {
+    beginner: "Explique-moi [CONCEPT IA : machine learning/LLM/neural network] de façon très simple.\nJe n'ai aucune connaissance technique.\nUtilise des exemples concrets de la vie quotidienne. Réponds en {lang}.",
+    intermediate: "Explique [CONCEPT IA] en détail :\n- Comment ça fonctionne\n- Quels sont les modèles principaux\n- Comment l'utiliser dans ma vie quotidienne\n- Les limites actuelles. Réponds en {lang}.",
+    expert: "Analyse en profondeur [CONCEPT/MODÈLE IA] :\n- Architecture et mécanismes techniques\n- Benchmark et comparaisons\n- Cas d'usage avancés\n- Tendances et recherches récentes\n- Implications éthiques. Réponds en {lang}."
+  }
+};
+
+var aiSuffix = {
+  chatgpt: "\n\n[À utiliser sur : https://chat.openai.com]",
+  claude: "\n\n[À utiliser sur : https://claude.ai]",
+  gemini: "\n\n[À utiliser sur : https://gemini.google.com]",
+  grok: "\n\n[À utiliser sur : https://grok.com]",
+  any: ""
+};
+
+function generatePrompt() {
+  var task = document.getElementById('pg-task').value;
+  var level = document.getElementById('pg-level').value;
+  var ai = document.getElementById('pg-ai').value;
+  var lang = document.getElementById('pg-lang').value;
+
+  var template = prompts[task][level];
+  var result = template.replace('{lang}', lang) + aiSuffix[ai];
+
+  document.getElementById('pg-result').textContent = result;
+}
+
+function copyPrompt() {
+  var text = document.getElementById('pg-result').textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.getElementById('pg-copy-btn');
+    btn.textContent = '✅ Copié !';
+    setTimeout(function() { btn.textContent = '📋 Copier le prompt'; }, 2000);
+  });
+}
+
+window.addEventListener('load', function() { generatePrompt(); });
+</script>
+
+<!-- TOKENOMICS -->
+<section class="section" id="tokenomics">
+  <h2 class="section-title" data-i18n="section_tokenomics">Tokenomics</h2>
+  <div class="tokenomics-grid">
+    <div class="token-card">
+      <div class="token-card-icon">💧</div>
+      <div class="token-card-title" data-i18n="tok_liq_title">Liquidité</div>
+      <div class="token-card-pct">80%</div>
+      <div class="token-card-desc" data-i18n="tok_liq_desc">Pool de liquidité — verrouillée pour toujours</div>
+    </div>
+    <div class="token-card">
+      <div class="token-card-icon">📣</div>
+      <div class="token-card-title" data-i18n="tok_mkt_title">Marketing</div>
+      <div class="token-card-pct">10%</div>
+      <div class="token-card-desc" data-i18n="tok_mkt_desc">Promotions, partenariats, campagnes</div>
+    </div>
+    <div class="token-card">
+      <div class="token-card-icon">🏆</div>
+      <div class="token-card-title" data-i18n="tok_team_title">Équipe</div>
+      <div class="token-card-pct">5%</div>
+      <div class="token-card-desc" data-i18n="tok_team_desc">Vesting sur 12 mois</div>
+    </div>
+    <div class="token-card">
+      <div class="token-card-icon">🎁</div>
+      <div class="token-card-title" data-i18n="tok_air_title">Airdrop</div>
+      <div class="token-card-pct">5%</div>
+      <div class="token-card-desc" data-i18n="tok_air_desc">Récompenses communautaires</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO BUY -->
+<section class="section" id="buy">
+  <h2 class="section-title" data-i18n="section_buy">Comment acheter</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3 data-i18n="step1_title">Crée un wallet Phantom</h3>
+        <p data-i18n="step1_desc">Télécharge l'extension Phantom sur <strong>phantom.app</strong> et crée un nouveau wallet Solana. Garde ta seed phrase en sécurité.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3 data-i18n="step2_title">Achète du SOL</h3>
+        <p data-i18n="step2_desc">Achète du SOL sur Coinbase, Binance ou Kraken, puis transfère-le vers ton wallet Phantom.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3 data-i18n="step3_title">Swap sur Raydium ou Jupiter</h3>
+        <p data-i18n="step3_desc">Va sur <strong>raydium.io</strong> ou <strong>jup.ag</strong>, colle l'adresse du contrat $LAI et swap tes SOL contre $LAI.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3 data-i18n="step4_title">🎉 Bienvenue dans la communauté !</h3>
+        <p data-i18n="step4_desc">Tes $LAI apparaissent automatiquement dans ton wallet Phantom. HODL fort ! 🙌</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTRACT ADDRESS -->
 <div class="ca-box" id="contract">
   <h2 class="section-title" data-i18n="section_contract">Adresse du Contrat</h2>
@@ -1225,190 +1130,105 @@ window.addEventListener('load', function() { startQuiz(); });
 </div>
 
 
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span>$LAI 🚀</span><span>100 000 000 000 SUPPLY</span><span>0% TAXES</span>
+    <span>LIQUIDITY LOCKED 🔒</span><span>MINT REVOKED ✅</span><span>SOLANA ⚡</span>
+    <span>COMMUNITY FIRST 🐸</span><span>BASED & BULLISH</span>
+    <span>$LAI 🚀</span><span>100 000 000 000 SUPPLY</span><span>0% TAXES</span>
+    <span>LIQUIDITY LOCKED 🔒</span><span>MINT REVOKED ✅</span><span>SOLANA ⚡</span>
+    <span>COMMUNITY FIRST 🐸</span><span>BASED & BULLISH</span>
+  </div>
+</div>
+
+<!-- CHATBOT FLOTTANT -->
+<div id="chat-bubble" onclick="toggleChat()" style="position:fixed;bottom:2rem;right:2rem;background:var(--accent);border-radius:100px;display:flex;align-items:center;gap:.5rem;padding:.75rem 1.2rem;cursor:pointer;z-index:999;box-shadow:0 0 24px rgba(79,255,176,.5);font-size:.85rem;font-weight:700;font-family:'Space Mono',monospace;color:#050f08;transition:transform .2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">🤖 <span>Chat $LAI</span></div>
+
+<div id="chat-window" style="display:none;position:fixed;bottom:6rem;right:2rem;width:340px;background:var(--surface);border:1px solid rgba(79,255,176,.3);border-radius:16px;z-index:998;box-shadow:0 8px 40px rgba(0,0,0,.4);overflow:hidden;flex-direction:column;">
+  <div style="background:rgba(79,255,176,.1);padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);">
+    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;">💬 Assistant $LAI</div>
+    <button onclick="toggleChat()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.1rem;">✕</button>
+  </div>
+  <div id="chat-messages" style="padding:1rem;height:280px;overflow-y:auto;display:flex;flex-direction:column;gap:.75rem;">
+    <div id="chat-welcome" style="background:rgba(79,255,176,.08);border:1px solid rgba(79,255,176,.2);border-radius:8px;padding:.75rem;font-size:.78rem;line-height:1.6;max-width:90%;">
+      👋 Bonjour ! Je suis l'assistant $LAI. Pose-moi n'importe quelle question sur l'IA ou sur $LAI !
+    </div>
+  </div>
+  <div style="padding:.75rem;border-top:1px solid var(--border);display:flex;gap:.5rem;">
+    <input id="chat-input" type="text" placeholder="Pose ta question..." id="chat-input" style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.6rem .8rem;color:var(--text);font-family:'Space Mono',monospace;font-size:.75rem;outline:none;" onkeypress="if(event.key==='Enter')sendChat()" onfocus="this.style.borderColor='rgba(79,255,176,.4)'" onblur="this.style.borderColor='var(--border)'"/>
+    <button onclick="sendChat()" style="background:var(--accent);color:#050f08;border:none;border-radius:8px;padding:.6rem .9rem;font-weight:700;cursor:pointer;font-size:.8rem;">➤</button>
+  </div>
+  <div style="text-align:center;padding:.4rem;color:var(--muted);font-size:.6rem;">⚡ Propulsé par Groq IA</div>
+</div>
+
+<script>
+var chatTranslations = {
+  fr: { welcome: "👋 Bonjour ! Je suis l'assistant $LAI. Pose-moi n'importe quelle question sur l'IA ou sur $LAI !", placeholder: "Pose ta question...", title: "💬 Assistant $LAI", typing: "⏳ Réflexion en cours...", error: "❌ Erreur. Réessaie !", powered: "⚡ Propulsé par Groq IA" },
+  en: { welcome: "👋 Hello! I'm the $LAI assistant. Ask me anything about AI or $LAI!", placeholder: "Ask your question...", title: "💬 $LAI Assistant", typing: "⏳ Thinking...", error: "❌ Error. Try again!", powered: "⚡ Powered by Groq AI" },
+  de: { welcome: "👋 Hallo! Ich bin der $LAI-Assistent. Frag mich alles über KI oder $LAI!", placeholder: "Stell deine Frage...", title: "💬 $LAI Assistent", typing: "⏳ Denke nach...", error: "❌ Fehler. Versuch es nochmal!", powered: "⚡ Betrieben von Groq KI" },
+  es: { welcome: "👋 ¡Hola! Soy el asistente $LAI. ¡Pregúntame cualquier cosa sobre IA o $LAI!", placeholder: "Haz tu pregunta...", title: "💬 Asistente $LAI", typing: "⏳ Pensando...", error: "❌ Error. ¡Inténtalo de nuevo!", powered: "⚡ Impulsado por Groq IA" },
+  zh: { welcome: "👋 你好！我是$LAI助手。问我任何关于AI或$LAI的问题！", placeholder: "提出你的问题...", title: "💬 $LAI 助手", typing: "⏳ 思考中...", error: "❌ 错误，请重试！", powered: "⚡ 由Groq AI驱动" },
+  ar: { welcome: "👋 مرحباً! أنا مساعد $LAI. اسألني أي شيء عن الذكاء الاصطناعي أو $LAI!", placeholder: "اطرح سؤالك...", title: "💬 مساعد $LAI", typing: "⏳ جارٍ التفكير...", error: "❌ خطأ. حاول مرة أخرى!", powered: "⚡ مدعوم بواسطة Groq AI" }
+};
+
+function updateChatLang() {
+  var t = chatTranslations[currentLang] || chatTranslations['en'];
+  var welcome = document.getElementById('chat-welcome');
+  var input = document.getElementById('chat-input');
+  var title = document.querySelector('#chat-window div span');
+  if (welcome) welcome.textContent = t.welcome;
+  if (input) input.placeholder = t.placeholder;
+}
+
+function toggleChat() {
+  var win = document.getElementById('chat-window');
+  win.style.display = win.style.display === 'none' ? 'flex' : 'none';
+  if (win.style.display === 'flex') {
+    updateChatLang();
+    document.getElementById('chat-input').focus();
+  }
+}
+
+async function sendChat() {
+  var input = document.getElementById('chat-input');
+  var messages = document.getElementById('chat-messages');
+  var msg = input.value.trim();
+  if (!msg) return;
+
+  var userDiv = document.createElement('div');
+  userDiv.style.cssText = 'background:rgba(79,255,176,.12);border:1px solid rgba(79,255,176,.25);border-radius:8px;padding:.75rem;font-size:.78rem;line-height:1.6;max-width:90%;align-self:flex-end;margin-left:auto;';
+  userDiv.textContent = msg;
+  messages.appendChild(userDiv);
+  input.value = '';
+  messages.scrollTop = messages.scrollHeight;
+
+  var typingDiv = document.createElement('div');
+  typingDiv.style.cssText = 'background:rgba(79,255,176,.08);border:1px solid rgba(79,255,176,.2);border-radius:8px;padding:.75rem;font-size:.78rem;color:var(--muted);max-width:90%;';
+  typingDiv.textContent = '⏳ Réflexion en cours...';
+  messages.appendChild(typingDiv);
+  messages.scrollTop = messages.scrollHeight;
+
+  try {
+    var response = await fetch('/.netlify/functions/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: msg })
+    });
+    var data = await response.json();
+    typingDiv.style.color = 'var(--text)';
+    typingDiv.textContent = '🤖 ' + data.reply;
+  } catch(e) {
+    typingDiv.textContent = '❌ Erreur. Réessaie !';
+  }
+  messages.scrollTop = messages.scrollHeight;
+}
+</script>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-socials">
     <a href="https://twitter.com/LearnAI_LAI" target="_blank" title="Twitter / X">
       <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.258 5.63 5.906-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
     </a>
-    <a href="https://t.me/" target="_blank" title="Telegram">
-      <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
-    </a>
-    <a href="https://discord.gg/dnqzEG5u" target="_blank" title="Discord">
-      <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-    </a>
-    <a href="https://pump.fun/coin/DgaQtZvWN8hf52H4pjsossbLqvQPFqM9ZpQxhS2fpump" target="_blank" title="Pump.fun">🟢</a>
-  </div>
-  <p data-i18n="footer_disclaimer">LEARN A.I $LAI — Ce token est un meme coin sans valeur intrinsèque. Pas un conseil financier. DYOR. 🐸</p>
-  <p style="margin-top:.5rem; opacity:.5;" data-i18n="footer_powered">Propulsé par Solana ⚡</p>
-</footer>
-
-<script>
-var i18n = {
-  fr: {
-    nav_tokenomics:"Tokenomics",nav_buy:"Acheter",nav_contract:"Contrat",
-    badge:"Nouveau sur Solana",
-    hero_sub:"Le meme coin décentralisé sur Solana. Rapide, fun, et complètement dégénéré 🐸",
-    hero_sub2:"Ce projet est dédié à l'usage de LEARN A.I, projet d'entraide et de compréhension de l'IA ! 🤖",
-    btn_buy:"🟢 Acheter $LAI",btn_tokenomics:"Voir les tokenomics",
-    stat_supply:"Supply Totale",stat_taxes:"Taxes",stat_decimals:"Décimales",stat_chain:"Blockchain",
-    section_tokenomics:"Tokenomics",
-    tok_liq_title:"Liquidité",tok_liq_desc:"Pool de liquidité — verrouillée pour toujours",
-    tok_mkt_title:"Marketing",tok_mkt_desc:"Promotions, partenariats, campagnes",
-    tok_team_title:"Équipe",tok_team_desc:"Vesting sur 12 mois",
-    tok_air_title:"Airdrop",tok_air_desc:"Récompenses communautaires",
-    section_buy:"Comment acheter",
-    step1_title:"Crée un wallet Phantom",step1_desc:"Télécharge Phantom sur phantom.app et crée un wallet Solana. Garde ta seed phrase en sécurité.",
-    step2_title:"Achète du SOL",step2_desc:"Achète du SOL sur Coinbase, Binance ou Kraken, puis transfère-le vers ton wallet Phantom.",
-    step3_title:"Swap sur Raydium ou Jupiter",step3_desc:"Va sur raydium.io ou jup.ag, colle l'adresse $LAI et swap tes SOL contre $LAI.",
-    step4_title:"🎉 Bienvenue dans la communauté !",step4_desc:"Tes $LAI apparaissent dans ton wallet Phantom. HODL fort ! 🙌",
-    section_contract:"Adresse du Contrat",ca_label:"Contract Address (CA)",copy_btn:"📋 Copier",
-    quiz_title:"🧠 Quel est ton niveau en IA ?",quiz_restart:"🔄 Recommencer",
-    footer_disclaimer:"LEARN A.I $LAI — Pas un conseil financier. DYOR. 🐸",
-    footer_powered:"Propulsé par Solana ⚡"
-  },
-  en: {
-    nav_tokenomics:"Tokenomics",nav_buy:"Buy",nav_contract:"Contract",
-    badge:"New on Solana",
-    hero_sub:"The decentralized meme coin on Solana. Fast, fun, and completely degenerate 🐸",
-    hero_sub2:"This project is dedicated to LEARN A.I — a community of mutual help and AI understanding! 🤖",
-    btn_buy:"🟢 Buy $LAI",btn_tokenomics:"View tokenomics",
-    stat_supply:"Total Supply",stat_taxes:"Taxes",stat_decimals:"Decimals",stat_chain:"Blockchain",
-    section_tokenomics:"Tokenomics",
-    tok_liq_title:"Liquidity",tok_liq_desc:"Liquidity pool — locked forever",
-    tok_mkt_title:"Marketing",tok_mkt_desc:"Promotions, partnerships, campaigns",
-    tok_team_title:"Team",tok_team_desc:"12-month vesting",
-    tok_air_title:"Airdrop",tok_air_desc:"Community rewards",
-    section_buy:"How to buy",
-    step1_title:"Create a Phantom wallet",step1_desc:"Download Phantom at phantom.app and create a Solana wallet. Keep your seed phrase safe.",
-    step2_title:"Buy SOL",step2_desc:"Buy SOL on Coinbase, Binance or Kraken, then transfer it to your Phantom wallet.",
-    step3_title:"Swap on Raydium or Jupiter",step3_desc:"Go to raydium.io or jup.ag, paste the $LAI contract address and swap your SOL for $LAI.",
-    step4_title:"🎉 Welcome to the community!",step4_desc:"Your $LAI will appear in your Phantom wallet. HODL strong! 🙌",
-    section_contract:"Contract Address",ca_label:"Contract Address (CA)",copy_btn:"📋 Copy",
-    quiz_title:"🧠 What's your AI level?",quiz_restart:"🔄 Restart",
-    footer_disclaimer:"LEARN A.I $LAI — Not financial advice. DYOR. 🐸",
-    footer_powered:"Powered by Solana ⚡"
-  },
-  de: {
-    nav_tokenomics:"Tokenomics",nav_buy:"Kaufen",nav_contract:"Vertrag",
-    badge:"Neu auf Solana",
-    hero_sub:"Der dezentralisierte Meme-Coin auf Solana. Schnell, lustig und völlig degeneriert 🐸",
-    hero_sub2:"Dieses Projekt ist LEARN A.I gewidmet — gegenseitige Hilfe und KI-Verständnis! 🤖",
-    btn_buy:"🟢 $LAI kaufen",btn_tokenomics:"Tokenomics ansehen",
-    stat_supply:"Gesamtangebot",stat_taxes:"Steuern",stat_decimals:"Dezimalstellen",stat_chain:"Blockchain",
-    section_tokenomics:"Tokenomics",
-    tok_liq_title:"Liquidität",tok_liq_desc:"Liquiditätspool — für immer gesperrt",
-    tok_mkt_title:"Marketing",tok_mkt_desc:"Promotionen, Partnerschaften, Kampagnen",
-    tok_team_title:"Team",tok_team_desc:"Vesting über 12 Monate",
-    tok_air_title:"Airdrop",tok_air_desc:"Community-Belohnungen",
-    section_buy:"Wie kaufen",
-    step1_title:"Phantom Wallet erstellen",step1_desc:"Lade Phantom auf phantom.app herunter und erstelle ein Solana-Wallet. Bewahre deine Seed-Phrase sicher auf.",
-    step2_title:"SOL kaufen",step2_desc:"Kaufe SOL auf Coinbase, Binance oder Kraken und überweise es in dein Phantom-Wallet.",
-    step3_title:"Swap auf Raydium oder Jupiter",step3_desc:"Gehe zu raydium.io oder jup.ag, füge die $LAI-Adresse ein und tausche SOL gegen $LAI.",
-    step4_title:"🎉 Willkommen in der Community!",step4_desc:"Deine $LAI erscheinen in deinem Phantom-Wallet. Starkes HODL! 🙌",
-    section_contract:"Vertragsadresse",ca_label:"Contract Address (CA)",copy_btn:"📋 Kopieren",
-    quiz_title:"🧠 Was ist dein KI-Level?",quiz_restart:"🔄 Neustart",
-    footer_disclaimer:"LEARN A.I $LAI — Keine Finanzberatung. DYOR. 🐸",
-    footer_powered:"Betrieben von Solana ⚡"
-  },
-  zh: {
-    nav_tokenomics:"代币经济",nav_buy:"购买",nav_contract:"合约",
-    badge:"Solana 新项目",
-    hero_sub:"Solana 上的去中心化 Meme 币。快速、有趣，完全放飞自我 🐸",
-    hero_sub2:"本项目致力于 LEARN A.I 的使用 — 互助与人工智能理解社区！ 🤖",
-    btn_buy:"🟢 购买 $LAI",btn_tokenomics:"查看代币经济",
-    stat_supply:"总供应量",stat_taxes:"税费",stat_decimals:"小数位",stat_chain:"区块链",
-    section_tokenomics:"代币经济",
-    tok_liq_title:"流动性",tok_liq_desc:"流动性池 — 永久锁定",
-    tok_mkt_title:"市场营销",tok_mkt_desc:"推广、合作、活动",
-    tok_team_title:"团队",tok_team_desc:"12 个月归属期",
-    tok_air_title:"空投",tok_air_desc:"社区奖励",
-    section_buy:"如何购买",
-    step1_title:"创建 Phantom 钱包",step1_desc:"在 phantom.app 下载 Phantom，创建 Solana 钱包。妥善保管助记词。",
-    step2_title:"购买 SOL",step2_desc:"在 Coinbase、Binance 或 Kraken 购买 SOL，转入 Phantom 钱包。",
-    step3_title:"在 Raydium 或 Jupiter 兑换",step3_desc:"访问 raydium.io 或 jup.ag，粘贴 $LAI 地址，将 SOL 兑换为 $LAI。",
-    step4_title:"🎉 欢迎加入社区！",step4_desc:"您的 $LAI 将显示在 Phantom 钱包中。坚定持有！ 🙌",
-    section_contract:"合约地址",ca_label:"合约地址 (CA)",copy_btn:"📋 复制",
-    quiz_title:"🧠 你的AI水平如何？",quiz_restart:"🔄 重新开始",
-    footer_disclaimer:"LEARN A.I $LAI — 非投资建议。DYOR. 🐸",
-    footer_powered:"Solana 驱动 ⚡"
-  },
-  es: {
-    nav_tokenomics:"Tokenomics",nav_buy:"Comprar",nav_contract:"Contrato",
-    badge:"Nuevo en Solana",
-    hero_sub:"La meme coin descentralizada en Solana. Rápida, divertida y completamente degenerada 🐸",
-    hero_sub2:"Este proyecto está dedicado a LEARN A.I — comunidad de ayuda mutua y comprensión de la IA! 🤖",
-    btn_buy:"🟢 Comprar $LAI",btn_tokenomics:"Ver tokenomics",
-    stat_supply:"Suministro Total",stat_taxes:"Impuestos",stat_decimals:"Decimales",stat_chain:"Blockchain",
-    section_tokenomics:"Tokenomics",
-    tok_liq_title:"Liquidez",tok_liq_desc:"Pool de liquidez — bloqueada para siempre",
-    tok_mkt_title:"Marketing",tok_mkt_desc:"Promociones, asociaciones, campañas",
-    tok_team_title:"Equipo",tok_team_desc:"Vesting de 12 meses",
-    tok_air_title:"Airdrop",tok_air_desc:"Recompensas comunitarias",
-    section_buy:"Cómo comprar",
-    step1_title:"Crea una wallet Phantom",step1_desc:"Descarga Phantom en phantom.app y crea una wallet Solana. Guarda tu frase semilla.",
-    step2_title:"Compra SOL",step2_desc:"Compra SOL en Coinbase, Binance o Kraken y transfierelo a Phantom.",
-    step3_title:"Swap en Raydium o Jupiter",step3_desc:"Ve a raydium.io o jup.ag, pega la dirección $LAI y cambia SOL por $LAI.",
-    step4_title:"🎉 ¡Bienvenido a la comunidad!",step4_desc:"Tus $LAI aparecerán en tu wallet Phantom. ¡HODL fuerte! 🙌",
-    section_contract:"Dirección del Contrato",ca_label:"Contract Address (CA)",copy_btn:"📋 Copiar",
-    quiz_title:"🧠 ¿Cuál es tu nivel de IA?",quiz_restart:"🔄 Reiniciar",
-    footer_disclaimer:"LEARN A.I $LAI — No es consejo financiero. DYOR. 🐸",
-    footer_powered:"Impulsado por Solana ⚡"
-  },
-  ar: {
-    nav_tokenomics:"التوكينوميكس",nav_buy:"شراء",nav_contract:"العقد",
-    badge:"جديد على سولانا",
-    hero_sub:"عملة الميم اللامركزية على سولانا. سريعة، ممتعة، ومجنونة تماماً 🐸",
-    hero_sub2:"هذا المشروع مخصص لـ LEARN A.I — مجتمع التعلم المتبادل وفهم الذكاء الاصطناعي! 🤖",
-    btn_buy:"🟢 اشتر $LAI",btn_tokenomics:"عرض التوكينوميكس",
-    stat_supply:"إجمالي العرض",stat_taxes:"الضرائب",stat_decimals:"الكسور العشرية",stat_chain:"البلوكشين",
-    section_tokenomics:"التوكينوميكس",
-    tok_liq_title:"السيولة",tok_liq_desc:"مجمع السيولة — مقفل للأبد",
-    tok_mkt_title:"التسويق",tok_mkt_desc:"الترويج والشراكات والحملات",
-    tok_team_title:"الفريق",tok_team_desc:"استحقاق لمدة 12 شهراً",
-    tok_air_title:"الإسقاط الجوي",tok_air_desc:"مكافآت المجتمع",
-    section_buy:"كيفية الشراء",
-    step1_title:"إنشاء محفظة Phantom",step1_desc:"قم بتنزيل Phantom من phantom.app وإنشاء محفظة سولانا. احتفظ بعبارة البذرة في مكان آمن.",
-    step2_title:"شراء SOL",step2_desc:"اشترِ SOL من Coinbase أو Binance أو Kraken، ثم انقله إلى محفظة Phantom الخاصة بك.",
-    step3_title:"مبادلة على Raydium أو Jupiter",step3_desc:"اذهب إلى raydium.io أو jup.ag، والصق عنوان $LAI وقم بتبادل SOL مقابل $LAI.",
-    step4_title:"🎉 مرحباً بك في المجتمع!",step4_desc:"ستظهر $LAI في محفظة Phantom الخاصة بك. تمسك بقوة! 🙌",
-    section_contract:"عنوان العقد",ca_label:"عنوان العقد (CA)",copy_btn:"📋 نسخ",
-    quiz_title:"🧠 ما مستواك في الذكاء الاصطناعي؟",quiz_restart:"🔄 إعادة البدء",
-    footer_disclaimer:"LEARN A.I $LAI — ليس نصيحة مالية. DYOR. 🐸",
-    footer_powered:"مدعوم بواسطة Solana ⚡"
-  }
-};
-
-var currentLang = 'fr';
-
-function setLang(lang) {
-  if (!i18n[lang]) return;
-  currentLang = lang;
-  var t = i18n[lang];
-  var els = document.querySelectorAll('[data-i18n]');
-  for (var i = 0; i < els.length; i++) {
-    var key = els[i].getAttribute('data-i18n');
-    if (t[key] !== undefined) els[i].textContent = t[key];
-  }
-  document.documentElement.lang = lang;
-  // Support RTL pour l'arabe
-  document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-  updateChatLang();
-}
-
-function copyCA() {
-  var ca = document.getElementById('ca').innerText;
-  navigator.clipboard.writeText(ca).then(function() {
-    var btn = document.querySelector('.copy-btn');
-    btn.textContent = 'Copié !';
-    setTimeout(function() { btn.textContent = i18n[currentLang].copy_btn || 'Copier'; }, 2000);
-  });
-}
-
-document.getElementById('langSelect').addEventListener('change', function() {
-  setLang(this.value);
-  startQuiz();
-});
-</script>
-</body>
-</html>
+    <a href="https://t.me/" target="_blank" title="
