@@ -893,8 +893,202 @@ function showResult() {
 
 function restartQuiz() { startQuiz(); }
 
-window.addEventListener('load', function() { startQuiz(); });
+window.addEventListener('load', function() {
+  if (typeof currentLang === 'undefined') window.currentLang = 'fr';
+  startQuiz();
+});
 
+</script>
+
+<!-- TRADUCTEUR DE JARGON IA -->
+<div class="section" id="jargon">
+  <h2 class="section-title">📖 Traducteur de Jargon IA</h2>
+  <p style="color:var(--muted);font-size:.82rem;margin-bottom:1.5rem;">Un terme technique que tu ne comprends pas ? Tape-le et reçois une explication simple ! 🧠</p>
+
+  <div style="max-width:600px;margin:0 auto;">
+
+    <!-- Recherche -->
+    <div style="display:flex;gap:.75rem;margin-bottom:1rem;">
+      <input id="jargon-input" type="text" placeholder="Ex: LLM, RAG, GPU, Neural Network, Tokenomics..." style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;color:var(--text);font-family:'Space Mono',monospace;font-size:.8rem;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(79,255,176,.4)'" onblur="this.style.borderColor='var(--border)'" onkeypress="if(event.key==='Enter')translateJargon()" oninput="suggestJargon(this.value)"/>
+      <button onclick="translateJargon()" style="background:var(--accent);color:#050f08;border:none;border-radius:8px;padding:.75rem 1.2rem;font-family:'Space Mono',monospace;font-size:.8rem;font-weight:700;cursor:pointer;">🔍</button>
+    </div>
+
+    <!-- Suggestions rapides -->
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;">
+      <span style="color:var(--muted);font-size:.7rem;align-self:center;">Populaires :</span>
+      <button onclick="quickSearch('LLM')" class="jargon-tag">LLM</button>
+      <button onclick="quickSearch('RAG')" class="jargon-tag">RAG</button>
+      <button onclick="quickSearch('GPU')" class="jargon-tag">GPU</button>
+      <button onclick="quickSearch('Token')" class="jargon-tag">Token</button>
+      <button onclick="quickSearch('Fine-tuning')" class="jargon-tag">Fine-tuning</button>
+      <button onclick="quickSearch('Hallucination')" class="jargon-tag">Hallucination</button>
+      <button onclick="quickSearch('Prompt')" class="jargon-tag">Prompt</button>
+      <button onclick="quickSearch('Neural Network')" class="jargon-tag">Neural Network</button>
+      <button onclick="quickSearch('Blockchain')" class="jargon-tag">Blockchain</button>
+      <button onclick="quickSearch('DeFi')" class="jargon-tag">DeFi</button>
+    </div>
+
+    <!-- Résultat -->
+    <div id="jargon-result" style="display:none;background:var(--surface);border:1px solid rgba(79,255,176,.3);border-radius:12px;padding:1.5rem;">
+      <div id="jargon-term" style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.75rem;"></div>
+      <div id="jargon-simple" style="font-size:.9rem;line-height:1.7;margin-bottom:1rem;"></div>
+      <div id="jargon-analogy" style="background:rgba(79,255,176,.06);border-left:3px solid var(--accent);padding:.75rem 1rem;border-radius:0 8px 8px 0;font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;"></div>
+      <div id="jargon-example" style="font-size:.78rem;color:var(--muted);"></div>
+    </div>
+
+    <div id="jargon-notfound" style="display:none;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;color:var(--muted);font-size:.82rem;">
+      🤔 Terme non trouvé. Essaie le chatbot $LAI pour une explication personnalisée !
+    </div>
+  </div>
+</div>
+
+<style>
+.jargon-tag {
+  background: rgba(79,255,176,.06);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--muted);
+  padding: .3rem .8rem;
+  font-family: 'Space Mono', monospace;
+  font-size: .68rem;
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+}
+.jargon-tag:hover {
+  border-color: rgba(79,255,176,.4);
+  color: var(--accent);
+}
+</style>
+
+<script>
+var jargonDB = {
+  "llm": {
+    term: "LLM — Large Language Model",
+    simple: "Un LLM est un programme informatique entraîné sur des milliards de textes pour comprendre et générer du langage humain. ChatGPT, Claude, Gemini sont tous des LLMs.",
+    analogy: "💡 Analogie : Imagine un étudiant qui a lu toutes les bibliothèques du monde. Il peut répondre à presque toutes tes questions car il a \"vu\" énormément d'exemples.",
+    example: "🔎 Exemples : GPT-4 (OpenAI), Claude (Anthropic), Llama (Meta), Gemini (Google)"
+  },
+  "rag": {
+    term: "RAG — Retrieval Augmented Generation",
+    simple: "RAG est une technique qui permet à une IA de chercher des informations dans une base de données avant de répondre. Ça rend les réponses plus précises et à jour.",
+    analogy: "💡 Analogie : C'est comme si avant de répondre, l'IA ouvrait d'abord Google pour vérifier les infos, puis formulait sa réponse.",
+    example: "🔎 Utilisé par : ChatGPT avec navigation web, Perplexity AI, les chatbots d'entreprise"
+  },
+  "gpu": {
+    term: "GPU — Graphics Processing Unit",
+    simple: "Un GPU est une puce électronique ultra-puissante capable de faire des millions de calculs en parallèle. Indispensable pour entraîner et faire tourner les IA.",
+    analogy: "💡 Analogie : Si le CPU (processeur) est un expert qui fait une chose à la fois très bien, le GPU est une armée de 1000 soldats qui font des choses simples en même temps.",
+    example: "🔎 Marques : NVIDIA (H100, A100), AMD, utilisés dans les datacenters IA"
+  },
+  "token": {
+    term: "Token (IA)",
+    simple: "En IA, un token est une unité de texte — environ 3/4 d'un mot. Les LLMs lisent et génèrent du texte token par token. Les limites de contexte sont mesurées en tokens.",
+    analogy: "💡 Analogie : Si le texte est un collier de perles, chaque perle est un token. L'IA traite perle par perle.",
+    example: "🔎 1000 tokens ≈ 750 mots. GPT-4 peut traiter jusqu'à 128 000 tokens à la fois."
+  },
+  "fine-tuning": {
+    term: "Fine-tuning",
+    simple: "Le fine-tuning consiste à prendre un modèle IA déjà entraîné et à l'entraîner davantage sur des données spécifiques pour le spécialiser dans un domaine précis.",
+    analogy: "💡 Analogie : C'est comme prendre un médecin généraliste et lui faire suivre une spécialisation en cardiologie. Il garde ses connaissances générales mais devient expert dans un domaine.",
+    example: "🔎 Exemple : Fine-tuner GPT sur des textes juridiques pour créer un assistant avocat."
+  },
+  "hallucination": {
+    term: "Hallucination (IA)",
+    simple: "Une hallucination IA c'est quand l'IA invente des informations fausses mais les présente avec confiance comme si elles étaient vraies. C'est un problème majeur des LLMs.",
+    analogy: "💡 Analogie : Imagine quelqu'un qui ne sait pas la réponse à ta question mais qui invente une réponse très convaincante au lieu d'admettre son ignorance.",
+    example: "🔎 Exemple : Demander à une IA de citer des sources et elle invente des articles qui n'existent pas."
+  },
+  "prompt": {
+    term: "Prompt",
+    simple: "Un prompt est l'instruction ou la question que tu donnes à une IA. La qualité du prompt détermine directement la qualité de la réponse. C'est tout l'art du prompt engineering.",
+    analogy: "💡 Analogie : C'est comme donner une consigne à un stagiaire. Plus ta consigne est précise et claire, meilleur sera le résultat.",
+    example: "🔎 Mauvais prompt : \"Parle-moi de l'IA\" | Bon prompt : \"Explique-moi le machine learning en 3 points simples avec des exemples concrets\""
+  },
+  "neural network": {
+    term: "Neural Network — Réseau de Neurones",
+    simple: "Un réseau de neurones est un système informatique inspiré du cerveau humain. Il est composé de milliers de nœuds connectés qui apprennent à partir d'exemples.",
+    analogy: "💡 Analogie : Comme le cerveau humain avec ses neurones connectés, un réseau de neurones artificiel crée des connexions entre les données pour apprendre des patterns.",
+    example: "🔎 Utilisé pour : reconnaissance d'images, traduction, génération de texte, détection de fraude"
+  },
+  "blockchain": {
+    term: "Blockchain",
+    simple: "Une blockchain est une base de données décentralisée partagée entre des milliers d'ordinateurs. Chaque transaction est enregistrée dans un \"bloc\" lié aux précédents, impossible à modifier.",
+    analogy: "💡 Analogie : Imagine un cahier de comptes partagé avec tout le monde. Tout le monde peut le lire, personne ne peut effacer une ligne sans que ça se voie.",
+    example: "🔎 Exemples : Bitcoin, Ethereum, Solana (sur laquelle est $LAI !)"
+  },
+  "defi": {
+    term: "DeFi — Decentralized Finance",
+    simple: "La DeFi c'est la finance sans banque. Des protocoles informatiques remplacent les banques pour prêter, emprunter, échanger des cryptos de façon automatique et transparente.",
+    analogy: "💡 Analogie : Au lieu d'aller à la banque pour un prêt, tu interagis avec un programme informatique qui gère tout automatiquement, sans humain.",
+    example: "🔎 Protocoles : Uniswap, Aave, Raydium (Solana), Jupiter (Solana)"
+  },
+  "machine learning": {
+    term: "Machine Learning — Apprentissage Automatique",
+    simple: "Le machine learning est une branche de l'IA où les ordinateurs apprennent à partir de données sans être explicitement programmés. Ils trouvent des patterns et améliorent leurs performances.",
+    analogy: "💡 Analogie : Au lieu de dire à un enfant toutes les règles du jeu, tu lui montres des milliers d'exemples et il apprend tout seul les patterns.",
+    example: "🔎 Applications : spam detection, recommandations Netflix, reconnaissance faciale"
+  },
+  "transformer": {
+    term: "Transformer",
+    simple: "Architecture révolutionnaire inventée par Google en 2017 qui est la base de tous les grands modèles de langage actuels (GPT, Claude, Gemini). Elle utilise un mécanisme d'\"attention\" pour comprendre le contexte.",
+    analogy: "💡 Analogie : Comme un lecteur humain qui surligne les mots importants dans un texte pour comprendre le sens global, le Transformer fait attention aux mots clés.",
+    example: "🔎 Article fondateur : \"Attention is All You Need\" (Google, 2017)"
+  },
+  "nft": {
+    term: "NFT — Non-Fungible Token",
+    simple: "Un NFT est un certificat de propriété numérique unique enregistré sur une blockchain. Il prouve que tu possèdes un fichier numérique spécifique (image, vidéo, etc.).",
+    analogy: "💡 Analogie : C'est comme un certificat d'authenticité pour une œuvre d'art, mais en numérique. La copie existe partout, mais le \"original certifié\" t'appartient.",
+    example: "🔎 Exemples : CryptoPunks, Bored Apes, art numérique sur Solana"
+  },
+  "solana": {
+    term: "Solana",
+    simple: "Solana est une blockchain ultra-rapide capable de traiter 65 000 transactions par seconde avec des frais quasi-nuls. C'est la blockchain sur laquelle $LAI est déployé !",
+    analogy: "💡 Analogie : Si Bitcoin est un vélo et Ethereum une voiture, Solana est un avion supersonique.",
+    example: "🔎 $LAI est sur Solana ! Mint Address : FEb3iGcsk5HVKwzugWWSGgEhmxsj2h2P7NMjxWGwBTc5"
+  },
+  "wallet": {
+    term: "Wallet — Portefeuille Crypto",
+    simple: "Un wallet crypto est une application qui stocke tes clés cryptographiques pour accéder à tes cryptomonnaies. Il ne stocke pas les coins eux-mêmes, mais les clés pour y accéder.",
+    analogy: "💡 Analogie : Ce n'est pas un vrai portefeuille — c'est plutôt comme un trousseau de clés qui te donne accès à ton coffre-fort sur la blockchain.",
+    example: "🔎 Wallets populaires : Phantom (Solana), MetaMask (Ethereum), Ledger (hardware)"
+  }
+};
+
+function translateJargon() {
+  var input = document.getElementById('jargon-input').value.toLowerCase().trim();
+  var result = jargonDB[input];
+
+  if (!result) {
+    // Cherche une correspondance partielle
+    for (var key in jargonDB) {
+      if (key.includes(input) || input.includes(key)) {
+        result = jargonDB[key];
+        break;
+      }
+    }
+  }
+
+  if (result) {
+    document.getElementById('jargon-notfound').style.display = 'none';
+    document.getElementById('jargon-result').style.display = 'block';
+    document.getElementById('jargon-term').textContent = result.term;
+    document.getElementById('jargon-simple').textContent = result.simple;
+    document.getElementById('jargon-analogy').textContent = result.analogy;
+    document.getElementById('jargon-example').textContent = result.example;
+  } else {
+    document.getElementById('jargon-result').style.display = 'none';
+    document.getElementById('jargon-notfound').style.display = 'block';
+  }
+}
+
+function quickSearch(term) {
+  document.getElementById('jargon-input').value = term;
+  translateJargon();
+}
+
+function suggestJargon(val) {
+  if (val.length > 2) translateJargon();
+}
 </script>
 
 <!-- GÉNÉRATEUR DE PROMPT -->
